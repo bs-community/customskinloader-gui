@@ -1,0 +1,26 @@
+{
+  "name": "customskinloader-gui-react",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "GPlane",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/highlight.js": "^9.1.9",
+    "react-hot-loader": "next",
+    "ts-loader": "^2.1.0",
+    "tslint": "^5.4.3",
+    "typescript": "^2.3.4",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "dependencies": {
+    "@types/material-ui": "^0.17.10",
+    "@types/react": "^15.0.27",
+    "@types/react-dom": "^15.5.0",
+    "highlight.js": "^9.12.0",
+    "material-ui": "^0.18.3",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-inline-grid": "^0.5.3"
+  }
+}
