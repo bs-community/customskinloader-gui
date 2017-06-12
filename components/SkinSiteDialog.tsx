@@ -32,6 +32,17 @@ class SkinSiteDialog extends React.Component<SkinSiteDialogProps, null> {
       >
         请选择 API：
         <RadioButtonGroup name="apiChoices">
+          <RadioButton label="MojangAPI" value="MojangAPI" style={radioButtonStyle}></RadioButton>
+          <RadioButton label="CustomSkinAPI" value="CustomSkinAPI" style={radioButtonStyle}></RadioButton>
+          <RadioButton label="UniSkinAPI" value="UniSkinAPI" style={radioButtonStyle}></RadioButton>
+          <RadioButton label="Legacy" value="Legacy" style={radioButtonStyle}></RadioButton>
+          <RadioButton label="ElfSkinAPI" value="ElfSkinAPI" style={radioButtonStyle}></RadioButton>
+          <RadioButton
+            label="CustomSkinAPIPlus"
+            value="CustomSkinAPIPlus"
+            style={radioButtonStyle}
+            disabled={true}
+          ></RadioButton>
         </RadioButtonGroup>
       </Dialog>
     )
