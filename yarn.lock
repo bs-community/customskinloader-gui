@@ -25,6 +25,10 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-tap-event-plugin@^0.0.30":
+  version "0.0.30"
+  resolved "http://registry.npm.taobao.org/@types/react-tap-event-plugin/download/@types/react-tap-event-plugin-0.0.30.tgz#123f35080412f489b6770c5a65c159ff96654cb5"
+
 "@types/react@*", "@types/react@^15.0.27":
   version "15.0.27"
   resolved "http://registry.npm.taobao.org/@types/react/download/@types/react-15.0.27.tgz#d64ad424aa24a101fd50cdeae6eab3d53e65513d"
@@ -859,7 +863,7 @@ faye-websocket@~0.11.0:
   dependencies:
     websocket-driver ">=0.5.1"
 
-fbjs@^0.8.1, fbjs@^0.8.4, fbjs@^0.8.9:
+fbjs@^0.8.1, fbjs@^0.8.4, fbjs@^0.8.6, fbjs@^0.8.9:
   version "0.8.12"
   resolved "http://registry.npm.taobao.org/fbjs/download/fbjs-0.8.12.tgz#10b5d92f76d45575fd63a217d4ea02bea2f8ed04"
   dependencies:
@@ -1999,6 +2003,12 @@ react-redux@^2.1.1:
   resolved "http://registry.npm.taobao.org/react-redux/download/react-redux-2.1.2.tgz#4b26e02a7e049d1dc8ba5200999a3e153b28afc7"
   dependencies:
     invariant "^2.0.0"
+
+react-tap-event-plugin@^2.0.1:
+  version "2.0.1"
+  resolved "http://registry.npm.taobao.org/react-tap-event-plugin/download/react-tap-event-plugin-2.0.1.tgz#316beb3bc6556e29ec869a7293e89c826a9074d2"
+  dependencies:
+    fbjs "^0.8.6"
 
 react-transition-group@^1.1.2:
   version "1.1.3"

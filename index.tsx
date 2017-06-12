@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import AppBar from 'material-ui/AppBar'
 import Dialog from 'material-ui/Dialog'
@@ -19,6 +20,7 @@ import CSLConfig from './config-handler'
 
 
 const muiTheme = getMuiTheme()
+injectTapEventPlugin()
 
 interface AppProps {
   jsonFailed: boolean
@@ -179,13 +181,8 @@ class App extends React.Component<{}, CSLConfig.CSLConfig & AppProps> {
             open={this.state.skinSiteDeleted}
             message={this.state.lastDeleted ? `已删除 ${this.state.lastDeleted.profile.name}` : ''}
             autoHideDuration={3000}
-            action={
-              <FlatButton
-                label="撤销"
-                secondary={true}
-                onClick={event => this.undoSkinSiteDeletion()}
-              ></FlatButton>
-            }
+            action="撤销"
+            onActionTouchTap={event => this.undoSkinSiteDeletion()}
           ></Snackbar>
         </div>
       </MuiThemeProvider>
