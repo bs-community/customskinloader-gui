@@ -5,6 +5,7 @@ import AppBar from 'material-ui/AppBar'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
+import Snackbar from 'material-ui/Snackbar'
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -19,7 +20,16 @@ import CSLConfig from './config-handler'
 
 const muiTheme = getMuiTheme()
 
-class Main extends React.Component<{}, CSLConfig.CSLConfig & { jsonFailed: boolean }> {
+interface AppProps {
+  jsonFailed: boolean
+  lastDeleted?: {
+    index: number
+    profile: CSLConfig.API
+  }
+  skinSiteDeleted: boolean
+}
+
+class App extends React.Component<{}, CSLConfig.CSLConfig & AppProps> {
   private fileInputElement: HTMLInputElement
   constructor() {
     super()
@@ -36,7 +46,8 @@ class Main extends React.Component<{}, CSLConfig.CSLConfig & { jsonFailed: boole
       cacheExpiry: 0,
       version: '',
       loadlist: [],
-      jsonFailed: false
+      jsonFailed: false,
+      skinSiteDeleted: false
     }
 
     Highlight.initHighlightingOnLoad()
@@ -75,10 +86,21 @@ class Main extends React.Component<{}, CSLConfig.CSLConfig & { jsonFailed: boole
     this.fileInputElement.click()
   }
 
+  undoSkinSiteDeletion () {
+    this.setState({ skinSiteDeleted: false })
+    if (this.state.lastDeleted) {
+      const loadList = this.state.loadlist
+      loadList.splice(this.state.lastDeleted.index, 0, this.state.lastDeleted.profile)
+      this.setState({ loadlist: loadList })
+    }
+  }
+
   generateJson () {
     const config = {}
     for (const key in this.state) {
-      if (key !== 'jsonFailed') {
+      if (![
+        'jsonFailed', 'lastDeleted', 'skinSiteDeleted'
+      ].includes(key)) {
         config[key] = this.state[key]
       }
     }
@@ -124,8 +146,9 @@ class Main extends React.Component<{}, CSLConfig.CSLConfig & { jsonFailed: boole
                   names={this.state.loadlist.map(item => item.name)}
                   onDeleteItem={index => {
                     const loadList = this.state.loadlist
+                    this.setState({ lastDeleted: { index: index, profile: loadList[index] } })
                     loadList.splice(index, 1)
-                    this.setState({ loadlist: loadList })
+                    this.setState({ loadlist: loadList, skinSiteDeleted: true })
                   }}
                 ></LoadList>
               </Cell>
@@ -149,11 +172,25 @@ class Main extends React.Component<{}, CSLConfig.CSLConfig & { jsonFailed: boole
                 onClick={() => this.setState({ jsonFailed: false })}
               ></FlatButton>
             ]}
-          >这不是一个有效的 CustomSkinLoader 配置文件，请重新选择</Dialog>
+          >这不是一个有效的 CustomSkinLoader 配置文件，请重新选择
+          </Dialog>
+
+          <Snackbar
+            open={this.state.skinSiteDeleted}
+            message={this.state.lastDeleted ? `已删除 ${this.state.lastDeleted.profile.name}` : ''}
+            autoHideDuration={3000}
+            action={
+              <FlatButton
+                label="撤销"
+                secondary={true}
+                onClick={event => this.undoSkinSiteDeletion()}
+              ></FlatButton>
+            }
+          ></Snackbar>
         </div>
       </MuiThemeProvider>
     )
   }
 }
 
-ReactDOM.render(<Main />, document.getElementById('app'))
+ReactDOM.render(<App />, document.getElementById('app'))
