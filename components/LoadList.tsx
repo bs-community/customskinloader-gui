@@ -6,7 +6,7 @@ import ContentClearIcon from 'material-ui/svg-icons/content/clear'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAddIcon from 'material-ui/svg-icons/content/add'
 
-import SkinSiteDialog from './SkinSiteDialog'
+import APIChoices from './SkinSiteDialogs/APIChoices'
 
 interface LoadListProps {
   names: string[]

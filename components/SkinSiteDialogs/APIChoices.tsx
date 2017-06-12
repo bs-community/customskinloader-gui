@@ -7,12 +7,12 @@ const radioButtonStyle = {
   marginTop: '5px'
 }
 
-interface SkinSiteDialogProps {
+interface APIChoicesProps {
   dialogOpen: boolean
   onClose (): void
 }
 
-class SkinSiteDialog extends React.Component<SkinSiteDialogProps, null> {
+class APIChoices extends React.Component<APIChoicesProps, null> {
   render () {
     return (
       <Dialog
@@ -49,4 +49,4 @@ class SkinSiteDialog extends React.Component<SkinSiteDialogProps, null> {
   }
 }
 
-export default SkinSiteDialog
+export default APIChoices
