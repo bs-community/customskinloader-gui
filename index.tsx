@@ -16,8 +16,16 @@ import Highlight from 'highlight.js'
 
 import CSLOptions from './components/CSLOptions'
 import LoadList from './components/LoadList'
+import SkinSiteEdit from './components/SkinSiteProfileEditor/SkinSiteEdit'
 import CSLConfig from './config-handler'
 
+
+type SkinSiteProfile = CSLConfig.MojangAPI
+  | CSLConfig.CustomSkinAPI
+  | CSLConfig.UniSkinAPI
+  | CSLConfig.Legacy
+  | CSLConfig.ElfSkin
+  | CSLConfig.CustomSkinAPIPlus
 
 const muiTheme = getMuiTheme()
 injectTapEventPlugin()
@@ -29,6 +37,9 @@ interface AppProps {
     profile: CSLConfig.API
   }
   skinSiteDeleted: boolean
+  profileEdit: SkinSiteProfile
+  profileEditIndex: number
+  isNewProfile: boolean
 }
 
 class App extends React.Component<{}, CSLConfig.CSLConfig & AppProps> {
@@ -49,7 +60,10 @@ class App extends React.Component<{}, CSLConfig.CSLConfig & AppProps> {
       version: '',
       loadlist: [],
       jsonFailed: false,
-      skinSiteDeleted: false
+      skinSiteDeleted: false,
+      profileEdit: { type: 'CustomSkinAPI', name: '', root: '' },
+      profileEditIndex: 0,
+      isNewProfile: true
     }
 
     Highlight.initHighlightingOnLoad()
@@ -74,8 +88,8 @@ class App extends React.Component<{}, CSLConfig.CSLConfig & AppProps> {
       fileReader.onload = event => {
         try {
           const json = JSON.parse(event.target['result'])
-          console.log(json)
           this.setState(json)
+          this.setState({ profileEditIndex: json.loadlist.length })
         } catch (error) {
           this.setState({ jsonFailed: true })
         }
@@ -98,14 +112,28 @@ class App extends React.Component<{}, CSLConfig.CSLConfig & AppProps> {
   }
 
   generateJson () {
-    const config = {}
+    const config: any = {}
     for (const key in this.state) {
       if (![
-        'jsonFailed', 'lastDeleted', 'skinSiteDeleted'
+        'jsonFailed',
+        'lastDeleted',
+        'skinSiteDeleted',
+        'profileEdit',
+        'isNewProfile',
+        'profileEditIndex'
       ].includes(key)) {
         config[key] = this.state[key]
       }
     }
+    config.loadlist = this.state.loadlist.map(item => {
+      const newItem = {}
+      for (const key in item) {
+        if (item[key] !== '' && item[key] !== false && item[key] !== 'default') {
+          newItem[key] = item[key]
+        }
+      }
+      return newItem
+    })
     return JSON.stringify(config, null, 4)
   }
 
@@ -142,17 +170,44 @@ class App extends React.Component<{}, CSLConfig.CSLConfig & AppProps> {
                     this.setState(newState)
                   }}
                 />
-              </Cell>
-              <Cell is="3 tablet-12 phone-12">
                 <LoadList
                   names={this.state.loadlist.map(item => item.name)}
                   onDeleteItem={index => {
                     const loadList = this.state.loadlist
                     this.setState({ lastDeleted: { index: index, profile: loadList[index] } })
                     loadList.splice(index, 1)
-                    this.setState({ loadlist: loadList, skinSiteDeleted: true })
+                    this.setState({
+                      loadlist: loadList,
+                      skinSiteDeleted: true,
+                      profileEdit: { name: '', type: 'CustomSkinAPI', root: '', userAgent: '' },
+                      isNewProfile: true,
+                      profileEditIndex: loadList.length
+                    })
                   }}
+                  onEditItem={index => this.setState({
+                    profileEdit: this.state.loadlist[index],
+                    isNewProfile: false,
+                    profileEditIndex: index
+                  })}
                 ></LoadList>
+              </Cell>
+              <Cell is="3 tablet-12 phone-12">
+                <SkinSiteEdit
+                  profile={this.state.profileEdit}
+                  isNewProfile={this.state.isNewProfile}
+                  onChange={profile => this.setState({ profileEdit: profile })}
+                  onSubmit={() => {
+                    const index = this.state.profileEditIndex
+                    const loadList = this.state.loadlist
+                    loadList[index] = this.state.profileEdit
+                    this.setState({
+                      loadlist: loadList,
+                      profileEdit: { name: '', type: 'CustomSkinAPI', root: '', userAgent: '' },
+                      isNewProfile: true,
+                      profileEditIndex: loadList.length
+                    })
+                  }}
+                />
               </Cell>
               <Cell is="5 tablet-12 phone-12">
                 <div style={{ marginTop: '5px' }}>
@@ -183,6 +238,7 @@ class App extends React.Component<{}, CSLConfig.CSLConfig & AppProps> {
             autoHideDuration={3000}
             action="撤销"
             onActionTouchTap={event => this.undoSkinSiteDeletion()}
+            onRequestClose={event => this.setState({ skinSiteDeleted: false })}
           ></Snackbar>
         </div>
       </MuiThemeProvider>

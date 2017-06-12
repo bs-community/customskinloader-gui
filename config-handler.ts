@@ -17,16 +17,19 @@ export interface API {
   type: 'MojangAPI' | 'CustomSkinAPI' | 'UniSkinAPI' | 'Legacy' | 'CustomSkinAPIPlus' | 'ElfSkin'
 }
 
+export interface JsonAPI extends API {
+  root: string
+  userAgent?: string
+}
+
 // tslint:disable-next-line:no-empty-interface
 export interface MojangAPI extends API { }
 
-export interface CustomSkinAPI extends API {
-  root: string
-}
+// tslint:disable-next-line:no-empty-interface
+export interface CustomSkinAPI extends JsonAPI { }
 
-export interface UniSkinAPI extends API {
-  root: string
-}
+// tslint:disable-next-line:no-empty-interface
+export interface UniSkinAPI extends JsonAPI { }
 
 export interface Legacy extends API {
   skin: string
@@ -34,11 +37,13 @@ export interface Legacy extends API {
   elytra?: string
   model?: 'default' | 'slim'
   checkPNG?: boolean
+  userAgent?: string
 }
 
 export interface CustomSkinAPIPlus extends API {
   root: string
 }
 
-// tslint:disable-next-line:no-empty-interface
-export interface ElfSkin extends API { }
+export interface ElfSkin extends API {
+  userAgent: string
+}
