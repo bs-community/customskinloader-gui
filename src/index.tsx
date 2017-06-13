@@ -29,16 +29,16 @@ type SkinSiteProfile = CSLConfig.MojangAPI
   | CSLConfig.ElfSkin
   | CSLConfig.CustomSkinAPIPlus
 
+const DEFAULT_PROFILE: SkinSiteProfile = { type: 'CustomSkinAPI', name: '', root: '', userAgent: '' }
+
 const muiTheme = getMuiTheme()
 injectTapEventPlugin()
 
 interface AppProps {
   cslConfig: CSLConfig.CSLConfig
   isParseJsonFailed: boolean
-  lastDeleted?: {
-    index: number
-    profile: CSLConfig.API
-  }
+  lastDeletedIndex: number
+  profileBackup: SkinSiteProfile
   skinSiteDeleted: boolean
   profileEdit: SkinSiteProfile
   profileEditIndex: number
@@ -65,8 +65,10 @@ class App extends React.Component<{}, AppProps> {
         loadlist: []
       },
       isParseJsonFailed: false,
+      lastDeletedIndex: -1,
+      profileBackup: DEFAULT_PROFILE,
       skinSiteDeleted: false,
-      profileEdit: { type: 'CustomSkinAPI', name: '', root: '' },
+      profileEdit: DEFAULT_PROFILE,
       profileEditIndex: 0,
       isNewProfile: true
     }
@@ -108,10 +110,13 @@ class App extends React.Component<{}, AppProps> {
 
   undoSkinSiteDeletion () {
     this.setState({ skinSiteDeleted: false })
-    if (this.state.lastDeleted) {
+    if (this.state.lastDeletedIndex !== -1) {
       const loadList = this.state.cslConfig.loadlist
-      loadList.splice(this.state.lastDeleted.index, 0, this.state.lastDeleted.profile)
-      this.setState({ cslConfig: assign({}, this.state.cslConfig, { loadlist: loadList }) })
+      loadList.splice(this.state.lastDeletedIndex, 0, this.state.profileBackup)
+      this.setState({
+        cslConfig: assign({}, this.state.cslConfig, { loadlist: loadList }),
+        profileBackup: DEFAULT_PROFILE
+      })
     }
   }
 
@@ -164,37 +169,74 @@ class App extends React.Component<{}, AppProps> {
                   names={this.state.cslConfig.loadlist.map(item => item.name)}
                   onDeleteItem={index => {
                     const loadList = this.state.cslConfig.loadlist
-                    this.setState({ lastDeleted: { index: index, profile: loadList[index] } })
+                    const backup = loadList[index]
                     loadList.splice(index, 1)
                     this.setState({
                       cslConfig: assign({}, this.state.cslConfig, { loadlist: loadList }),
                       skinSiteDeleted: true,
-                      profileEdit: { name: '', type: 'CustomSkinAPI', root: '', userAgent: '' },
+                      profileEdit: DEFAULT_PROFILE,
                       isNewProfile: true,
-                      profileEditIndex: loadList.length
+                      profileEditIndex: loadList.length,
+                      profileBackup: backup,
+                      lastDeletedIndex: index
                     })
                   }}
-                  onEditItem={index => this.setState({
-                    profileEdit: this.state.cslConfig.loadlist[index],
-                    isNewProfile: false,
-                    profileEditIndex: index
-                  })}
+                  onEditItem={index => {
+                    if (!this.state.isNewProfile) {
+                      const loadList = this.state.cslConfig.loadlist
+                      loadList[this.state.profileEditIndex] = this.state.profileBackup
+                      this.setState({ cslConfig: assign({}, this.state.cslConfig, { loadlist: loadList }) })
+                    }
+                    this.setState({
+                      profileBackup: this.state.cslConfig.loadlist[index],
+                      isNewProfile: false,
+                      profileEditIndex: index
+                    })
+                  }}
                 ></LoadList>
               </Cell>
               <Cell is="3 tablet-12 phone-12">
                 <SkinSiteEdit
-                  profile={this.state.profileEdit}
+                  profile={
+                    this.state.isNewProfile
+                      ? (this.state.lastDeletedIndex === -1
+                        ? this.state.profileBackup
+                        : DEFAULT_PROFILE)
+                      : this.state.cslConfig.loadlist[this.state.profileEditIndex]
+                  }
                   isNewProfile={this.state.isNewProfile}
-                  onChange={profile => this.setState({ profileEdit: profile })}
-                  onSubmit={() => {
-                    const index = this.state.profileEditIndex
+                  onChange={profile => {
+                    if (this.state.isNewProfile) {
+                      this.setState({ profileBackup: profile })
+                      return
+                    }
                     const loadList = this.state.cslConfig.loadlist
-                    loadList[index] = this.state.profileEdit
+                    loadList[this.state.profileEditIndex] = profile
+                    this.setState({ cslConfig: assign({}, this.state.cslConfig, { loadlist: loadList }) })
+                  }}
+                  onSubmit={() => {
+                    if (this.state.isNewProfile) {
+                      const loadList = this.state.cslConfig.loadlist
+                      loadList.push(this.state.profileBackup)
+                      this.setState({ cslConfig: assign({}, this.state.cslConfig, { loadlist: loadList }) })
+                    }
                     this.setState({
-                      cslConfig: assign({}, this.state.cslConfig, { loadlist: loadList }),
-                      profileEdit: { name: '', type: 'CustomSkinAPI', root: '', userAgent: '' },
+                      profileBackup: DEFAULT_PROFILE,
                       isNewProfile: true,
-                      profileEditIndex: loadList.length
+                      profileEditIndex: this.state.cslConfig.loadlist.length
+                    })
+                  }}
+                  onCancel={() => {
+                    if (this.state.isNewProfile) {
+                      this.setState({ profileBackup: DEFAULT_PROFILE })
+                      return
+                    }
+                    const loadList = this.state.cslConfig.loadlist
+                    loadList[this.state.profileEditIndex] = this.state.profileBackup
+                    this.setState({
+                      profileBackup: DEFAULT_PROFILE,
+                      isNewProfile: true,
+                      cslConfig: assign({}, this.state.cslConfig, { loadlist: loadList })
                     })
                   }}
                 />
@@ -224,11 +266,15 @@ class App extends React.Component<{}, AppProps> {
 
           <Snackbar
             open={this.state.skinSiteDeleted}
-            message={this.state.lastDeleted ? `已删除 ${this.state.lastDeleted.profile.name}` : ''}
+            message={this.state.lastDeletedIndex !== -1 ? `已删除 ${this.state.profileBackup.name}` : ''}
             autoHideDuration={3000}
             action="撤销"
             onActionTouchTap={event => this.undoSkinSiteDeletion()}
-            onRequestClose={event => this.setState({ skinSiteDeleted: false })}
+            onRequestClose={event => this.setState({
+              skinSiteDeleted: false,
+              lastDeletedIndex: -1,
+              profileBackup: DEFAULT_PROFILE
+            })}
           ></Snackbar>
         </div>
       </MuiThemeProvider>

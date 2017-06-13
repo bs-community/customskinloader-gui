@@ -2,7 +2,7 @@ import React from 'react'
 import Subheader from 'material-ui/Subheader'
 import { List, ListItem } from 'material-ui/List'
 import IconButton from 'material-ui/IconButton'
-import ContentClearIcon from 'material-ui/svg-icons/content/clear'
+import ActionDeleteIcon from 'material-ui/svg-icons/action/delete'
 
 import SkinSiteEdit from './SkinSiteProfileEditor/SkinSiteEdit'
 
@@ -29,7 +29,7 @@ class LoadList extends React.Component<LoadListProps, { dialogOpen: boolean }> {
             key={index}
             primaryText={name}
             rightIconButton={
-              <IconButton onClick={() => this.props.onDeleteItem(index)}><ContentClearIcon /></IconButton>
+              <IconButton onClick={() => this.props.onDeleteItem(index)}><ActionDeleteIcon /></IconButton>
             }
             onDoubleClick={() => this.props.onEditItem(index)}
           ></ListItem>

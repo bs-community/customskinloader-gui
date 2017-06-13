@@ -5,6 +5,7 @@ import MenuItem from 'material-ui/MenuItem'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAddIcon from 'material-ui/svg-icons/content/add'
 import ActionDoneIcon from 'material-ui/svg-icons/action/done'
+import ContentClearIcon from 'material-ui/svg-icons/content/clear'
 
 import MojangAPIForm from './MojangAPI'
 import JsonAPIForm from './JsonAPI'
@@ -32,6 +33,7 @@ class SkinSiteEdit extends React.Component<{
   profile: SkinSiteProfile,
   onChange (profile: SkinSiteProfile),
   onSubmit (),
+  onCancel (),
   isNewProfile: boolean
 }, null> {
   renderApiForm () {
@@ -102,16 +104,21 @@ class SkinSiteEdit extends React.Component<{
           <MenuItem value="CustomSkinAPIPlus" primaryText="高级 CustomSkin API" disabled={true}></MenuItem>
         </SelectField>
         {this.renderApiForm()}
-        <FloatingActionButton
-          mini={true}
-          style={{
-            marginTop: '10px',
-            marginLeft: '75%'
-          }}
-          onClick={() => this.props.onSubmit()}
-        >
-          {this.props.isNewProfile ? <ContentAddIcon /> : <ActionDoneIcon />}
-        </FloatingActionButton>
+        <div style={{ marginTop: '10px', marginLeft: '65%' }}>
+          <FloatingActionButton
+            mini={true}
+            style={{ marginRight: '15px' }}
+            onClick={() => this.props.onSubmit()}
+          >
+            {this.props.isNewProfile ? <ContentAddIcon /> : <ActionDoneIcon />}
+          </FloatingActionButton>
+          <FloatingActionButton
+            mini={true}
+            onClick={() => this.props.onCancel()}
+          >
+            <ContentClearIcon />
+          </FloatingActionButton>
+        </div>
       </div>
     )
   }
