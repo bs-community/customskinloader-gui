@@ -3,7 +3,7 @@ import React from 'react'
 import Toggle from 'material-ui/Toggle'
 import TextField from 'material-ui/TextField'
 
-import { JsonAPI } from '../../config-handler'
+import { JsonAPI } from '../../csl-config-types'
 
 class JsonAPIForm extends React.Component<JsonAPI & { onChange (profile: JsonAPI) }, { advanced: boolean }> {
   constructor() {

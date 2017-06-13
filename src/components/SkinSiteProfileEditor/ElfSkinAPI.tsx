@@ -3,7 +3,7 @@ import React from 'react'
 import Toggle from 'material-ui/Toggle'
 import TextField from 'material-ui/TextField'
 
-import { ElfSkin } from '../../config-handler'
+import { ElfSkin } from '../../csl-config-types'
 
 class ElfSkinForm extends React.Component<ElfSkin & { onChange (profile: ElfSkin) }, { advanced: boolean }> {
   constructor() {

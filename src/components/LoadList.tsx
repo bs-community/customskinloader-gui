@@ -4,8 +4,6 @@ import { List, ListItem } from 'material-ui/List'
 import IconButton from 'material-ui/IconButton'
 import ActionDeleteIcon from 'material-ui/svg-icons/action/delete'
 
-import SkinSiteEdit from './SkinSiteProfileEditor/SkinSiteEdit'
-
 interface LoadListProps {
   names: string[]
   onDeleteItem (index: number)

@@ -19,7 +19,7 @@ import 'highlight.js/styles/github.css'
 import CSLOptions from './components/CSLOptions'
 import LoadList from './components/LoadList'
 import SkinSiteEdit from './components/SkinSiteProfileEditor/SkinSiteEdit'
-import CSLConfig from './config-handler'
+import CSLConfig from './csl-config-types'
 
 
 type SkinSiteProfile = CSLConfig.MojangAPI

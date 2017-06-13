@@ -1,7 +1,7 @@
 import React from 'react'
 import TextField from 'material-ui/TextField'
 
-import { MojangAPI } from '../../config-handler'
+import { MojangAPI } from '../../csl-config-types'
 
 class MojangAPIForm extends React.Component<MojangAPI & { onChange (profile: MojangAPI) }, null> {
   render () {

@@ -6,7 +6,7 @@ import TextField from 'material-ui/TextField'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 
-import { Legacy } from '../../config-handler'
+import { Legacy } from '../../csl-config-types'
 
 class LegacyForm extends React.Component<Legacy & { onChange (profile: Legacy) }, { advanced: boolean }> {
   constructor() {

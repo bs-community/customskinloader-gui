@@ -20,7 +20,7 @@ import {
   Legacy,
   MojangAPI,
   UniSkinAPI
-} from '../../config-handler'
+} from '../../csl-config-types'
 
 type SkinSiteProfile = MojangAPI
   | CustomSkinAPI
