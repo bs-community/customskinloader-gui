@@ -1,3 +1,4 @@
+import assign from 'lodash.assign'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import injectTapEventPlugin from 'react-tap-event-plugin'
@@ -32,7 +33,8 @@ const muiTheme = getMuiTheme()
 injectTapEventPlugin()
 
 interface AppProps {
-  jsonFailed: boolean
+  cslConfig: CSLConfig.CSLConfig
+  isParseJsonFailed: boolean
   lastDeleted?: {
     index: number
     profile: CSLConfig.API
@@ -43,24 +45,26 @@ interface AppProps {
   isNewProfile: boolean
 }
 
-class App extends React.Component<{}, CSLConfig.CSLConfig & AppProps> {
+class App extends React.Component<{}, AppProps> {
   private fileInputElement: HTMLInputElement
   constructor() {
     super()
 
     this.state = {
-      enable: true,
-      enableSkull: false,
-      enableDynamicSkull: false,
-      enableTransparentSkin: false,
-      ignoreHttpsCertificate: false,
-      enableUpdateSkull: false,
-      enableLocalProfileCache: false,
-      enableCacheAutoClean: false,
-      cacheExpiry: 0,
-      version: '',
-      loadlist: [],
-      jsonFailed: false,
+      cslConfig: {
+        enable: true,
+        enableSkull: false,
+        enableDynamicSkull: false,
+        enableTransparentSkin: false,
+        ignoreHttpsCertificate: false,
+        enableUpdateSkull: false,
+        enableLocalProfileCache: false,
+        enableCacheAutoClean: false,
+        cacheExpiry: 0,
+        version: '',
+        loadlist: []
+      },
+      isParseJsonFailed: false,
       skinSiteDeleted: false,
       profileEdit: { type: 'CustomSkinAPI', name: '', root: '' },
       profileEditIndex: 0,
@@ -89,10 +93,9 @@ class App extends React.Component<{}, CSLConfig.CSLConfig & AppProps> {
       fileReader.onload = event => {
         try {
           const json = JSON.parse(event.target['result'])
-          this.setState(json)
-          this.setState({ profileEditIndex: json.loadlist.length })
+          this.setState({ cslConfig: json, profileEditIndex: json.loadlist.length })
         } catch (error) {
-          this.setState({ jsonFailed: true })
+          this.setState({ isParseJsonFailed: true })
         }
       }
       const files = event.target['files']
@@ -106,36 +109,24 @@ class App extends React.Component<{}, CSLConfig.CSLConfig & AppProps> {
   undoSkinSiteDeletion () {
     this.setState({ skinSiteDeleted: false })
     if (this.state.lastDeleted) {
-      const loadList = this.state.loadlist
+      const loadList = this.state.cslConfig.loadlist
       loadList.splice(this.state.lastDeleted.index, 0, this.state.lastDeleted.profile)
-      this.setState({ loadlist: loadList })
+      this.setState({ cslConfig: assign({}, this.state.cslConfig, { loadlist: loadList }) })
     }
   }
 
   generateJson () {
-    const config: any = {}
-    for (const key in this.state) {
-      if ([
-        'jsonFailed',
-        'lastDeleted',
-        'skinSiteDeleted',
-        'profileEdit',
-        'isNewProfile',
-        'profileEditIndex'
-      ].indexOf(key) === -1) {
-        config[key] = this.state[key]
-      }
-    }
-    config.loadlist = this.state.loadlist.map(item => {
+    const cslConfig = this.state.cslConfig
+    cslConfig.loadlist = this.state.cslConfig.loadlist.map(item => {
       const newItem = {}
       for (const key in item) {
         if (item[key] !== '' && item[key] !== false && item[key] !== 'default') {
           newItem[key] = item[key]
         }
       }
-      return newItem
+      return (newItem as CSLConfig.API)
     })
-    return JSON.stringify(config, null, 4)
+    return JSON.stringify(cslConfig, null, 4)
   }
 
   render () {
@@ -156,29 +147,27 @@ class App extends React.Component<{}, CSLConfig.CSLConfig & AppProps> {
               <Cell is="3 tablet-12 phone-12">
                 <CSLOptions
                   style={{ marginTop: '10px', marginLeft: '10px', width: '85%' }}
-                  enable={this.state.enable}
-                  enableSkull={this.state.enableSkull}
-                  enableDynamicSkull={this.state.enableDynamicSkull}
-                  enableTransparentSkin={this.state.enableTransparentSkin}
-                  ignoreHttpsCertificate={this.state.ignoreHttpsCertificate}
-                  enableUpdateSkull={this.state.enableUpdateSkull}
-                  enableLocalProfileCache={this.state.enableLocalProfileCache}
-                  enableCacheAutoClean={this.state.enableCacheAutoClean}
-                  cacheExpiry={this.state.cacheExpiry}
+                  enable={this.state.cslConfig.enable}
+                  enableSkull={this.state.cslConfig.enableSkull}
+                  enableDynamicSkull={this.state.cslConfig.enableDynamicSkull}
+                  enableTransparentSkin={this.state.cslConfig.enableTransparentSkin}
+                  ignoreHttpsCertificate={this.state.cslConfig.ignoreHttpsCertificate}
+                  enableUpdateSkull={this.state.cslConfig.enableUpdateSkull}
+                  enableLocalProfileCache={this.state.cslConfig.enableLocalProfileCache}
+                  enableCacheAutoClean={this.state.cslConfig.enableCacheAutoClean}
+                  cacheExpiry={this.state.cslConfig.cacheExpiry}
                   onChange={(property, value: boolean | number) => {
-                    const newState = {}
-                    newState[property] = value
-                    this.setState(newState)
+                    this.setState({ cslConfig: assign({}, this.state.cslConfig, { [property]: value }) })
                   }}
                 />
                 <LoadList
-                  names={this.state.loadlist.map(item => item.name)}
+                  names={this.state.cslConfig.loadlist.map(item => item.name)}
                   onDeleteItem={index => {
-                    const loadList = this.state.loadlist
+                    const loadList = this.state.cslConfig.loadlist
                     this.setState({ lastDeleted: { index: index, profile: loadList[index] } })
                     loadList.splice(index, 1)
                     this.setState({
-                      loadlist: loadList,
+                      cslConfig: assign({}, this.state.cslConfig, { loadlist: loadList }),
                       skinSiteDeleted: true,
                       profileEdit: { name: '', type: 'CustomSkinAPI', root: '', userAgent: '' },
                       isNewProfile: true,
@@ -186,7 +175,7 @@ class App extends React.Component<{}, CSLConfig.CSLConfig & AppProps> {
                     })
                   }}
                   onEditItem={index => this.setState({
-                    profileEdit: this.state.loadlist[index],
+                    profileEdit: this.state.cslConfig.loadlist[index],
                     isNewProfile: false,
                     profileEditIndex: index
                   })}
@@ -199,10 +188,10 @@ class App extends React.Component<{}, CSLConfig.CSLConfig & AppProps> {
                   onChange={profile => this.setState({ profileEdit: profile })}
                   onSubmit={() => {
                     const index = this.state.profileEditIndex
-                    const loadList = this.state.loadlist
+                    const loadList = this.state.cslConfig.loadlist
                     loadList[index] = this.state.profileEdit
                     this.setState({
-                      loadlist: loadList,
+                      cslConfig: assign({}, this.state.cslConfig, { loadlist: loadList }),
                       profileEdit: { name: '', type: 'CustomSkinAPI', root: '', userAgent: '' },
                       isNewProfile: true,
                       profileEditIndex: loadList.length
@@ -222,12 +211,12 @@ class App extends React.Component<{}, CSLConfig.CSLConfig & AppProps> {
 
           {/* Other Components */}
           <Dialog
-            open={this.state.jsonFailed}
+            open={this.state.isParseJsonFailed}
             actions={[
               <FlatButton
                 label="好的"
                 primary={true}
-                onClick={() => this.setState({ jsonFailed: false })}
+                onClick={() => this.setState({ isParseJsonFailed: false })}
               ></FlatButton>
             ]}
           >这不是一个有效的 CustomSkinLoader 配置文件，请重新选择
