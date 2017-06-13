@@ -21,15 +21,20 @@ class LoadList extends React.Component<LoadListProps, { dialogOpen: boolean }> {
   render () {
     return (
       <List style={{ border: '1px solid rgb(217, 217, 217)', width: '90%', marginTop: '10px' }}>
-        <Subheader>皮肤站加载列表<small>（双击项目可编辑）</small></Subheader>
+        <Subheader>皮肤站加载列表</Subheader>
         {this.props.names.map((name, index) => (
           <ListItem
             key={index}
             primaryText={name}
             rightIconButton={
-              <IconButton onClick={() => this.props.onDeleteItem(index)}><ActionDeleteIcon /></IconButton>
+              <IconButton onClick={event => {
+                event.stopPropagation()
+                this.props.onDeleteItem(index)
+              }}>
+                <ActionDeleteIcon />
+              </IconButton>
             }
-            onDoubleClick={() => this.props.onEditItem(index)}
+            onClick={() => this.props.onEditItem(index)}
           ></ListItem>
         ))}
       </List>
