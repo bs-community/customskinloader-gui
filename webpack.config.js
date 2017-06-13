@@ -21,9 +21,17 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.tsx?/,
+        test: /\.tsx?$/,
+        enforce: 'pre',
+        loader: 'tslint-loader',
+        options: {
+          typeCheck: true
+        }
+      },
+      {
+        test: /\.tsx?$/,
         loader: 'awesome-typescript-loader'
       },
       {
