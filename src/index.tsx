@@ -14,8 +14,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import Highlight from 'highlight.js'
-import 'highlight.js/styles/github.css'
 
+import { DEFAULT_PROFILE, LATEST_CSL_VERSION } from './constants'
 import CSLOptions from './components/CSLOptions'
 import LoadList from './components/LoadList'
 import SkinSiteEdit from './components/SkinSiteProfileEditor/SkinSiteEdit'
@@ -28,8 +28,6 @@ type SkinSiteProfile = CSLConfig.MojangAPI
   | CSLConfig.Legacy
   | CSLConfig.ElfSkin
   | CSLConfig.CustomSkinAPIPlus
-
-const DEFAULT_PROFILE: SkinSiteProfile = { type: 'CustomSkinAPI', name: '', root: '', userAgent: '' }
 
 const muiTheme = getMuiTheme()
 injectTapEventPlugin()
@@ -61,7 +59,7 @@ class App extends React.Component<{}, AppProps> {
         enableLocalProfileCache: false,
         enableCacheAutoClean: false,
         cacheExpiry: 0,
-        version: '',
+        version: LATEST_CSL_VERSION,
         loadlist: []
       },
       isParseJsonFailed: false,
