@@ -32,7 +32,7 @@ type SkinSiteProfile = CSLConfig.MojangAPI
 const muiTheme = getMuiTheme()
 injectTapEventPlugin()
 
-interface AppProps {
+interface AppState {
   cslConfig: CSLConfig.CSLConfig
   isParseJsonFailed: boolean
   lastDeletedIndex: number
@@ -43,7 +43,7 @@ interface AppProps {
   isNewProfile: boolean
 }
 
-class App extends React.Component<{}, AppProps> {
+class App extends React.Component<{}, AppState> {
   private fileInputElement: HTMLInputElement
   constructor() {
     super()
