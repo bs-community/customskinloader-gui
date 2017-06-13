@@ -13,6 +13,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import { Grid, Row, Cell } from 'react-inline-grid'
 import Highlight from 'highlight.js'
+import 'highlight.js/styles/github.css'
 
 import CSLOptions from './components/CSLOptions'
 import LoadList from './components/LoadList'
@@ -114,14 +115,14 @@ class App extends React.Component<{}, CSLConfig.CSLConfig & AppProps> {
   generateJson () {
     const config: any = {}
     for (const key in this.state) {
-      if (![
+      if ([
         'jsonFailed',
         'lastDeleted',
         'skinSiteDeleted',
         'profileEdit',
         'isNewProfile',
         'profileEditIndex'
-      ].includes(key)) {
+      ].indexOf(key) === -1) {
         config[key] = this.state[key]
       }
     }
