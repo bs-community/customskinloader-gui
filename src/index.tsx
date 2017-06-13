@@ -2,6 +2,7 @@ import assign from 'lodash.assign'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import injectTapEventPlugin from 'react-tap-event-plugin'
+import { Grid, Row, Cell } from 'react-inline-grid'
 
 import AppBar from 'material-ui/AppBar'
 import Dialog from 'material-ui/Dialog'
@@ -12,7 +13,6 @@ import Snackbar from 'material-ui/Snackbar'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-import { Grid, Row, Cell } from 'react-inline-grid'
 import Highlight from 'highlight.js'
 import 'highlight.js/styles/github.css'
 
