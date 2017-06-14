@@ -15,7 +15,12 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import Highlight from 'highlight.js'
 
-import { DEFAULT_PROFILE, LATEST_CSL_VERSION } from './constants'
+import {
+  DEFAULT_PROFILE,
+  LATEST_CSL_VERSION,
+  TIP_TEXT,
+  TIP_TEXT_INTERVAL
+} from './constants'
 import { swap } from './utils'
 import CSLOptions from './components/CSLOptions'
 import LoadList from './components/LoadList'
@@ -42,6 +47,7 @@ interface AppState {
   profileEdit: SkinSiteProfile
   profileEditIndex: number
   isNewProfile: boolean
+  currentTipTextIndex: number
 }
 
 class App extends React.Component<{}, AppState> {
@@ -69,10 +75,21 @@ class App extends React.Component<{}, AppState> {
       skinSiteDeleted: false,
       profileEdit: DEFAULT_PROFILE,
       profileEditIndex: 0,
-      isNewProfile: true
+      isNewProfile: true,
+      currentTipTextIndex: 0
     }
 
     Highlight.initHighlightingOnLoad()
+  }
+
+  componentDidMount () {
+    setInterval(() => {
+      if (this.state.currentTipTextIndex === TIP_TEXT.length - 1) {
+        this.setState({ currentTipTextIndex: 0 })
+      } else {
+        this.setState({ currentTipTextIndex: this.state.currentTipTextIndex + 1 })
+      }
+    }, TIP_TEXT_INTERVAL * 1000)
   }
 
   componentDidUpdate () {
@@ -265,6 +282,11 @@ class App extends React.Component<{}, AppState> {
                 <div style={{ marginTop: '5px' }}>
                   <RaisedButton label="点我下载" onClick={() => this.downloadFile()}></RaisedButton>
                   <span style={{ marginLeft: '5px' }}>也可以直接复制下面的结果</span>
+                  <div>
+                    <small style={{ color: '#757575' }}>
+                      {TIP_TEXT[this.state.currentTipTextIndex]}
+                    </small>
+                  </div>
                   <pre><code ref="jsonResult" className="json">{this.generateJson()}</code></pre>
                 </div>
               </Cell>
