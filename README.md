@@ -22,7 +22,7 @@
 
 ## Vue or React?
 
-其实我是一个 Vue 粉，但这次我选择了 React。有人说过：Vue 更适合做 Web Pages，而 React 更适合做 Web App。我很认同这一点，并且对于这个项目而言，React 比较适合*（纯属个人看法）*，特别配合 TypeScript，开发体验也是挺不错的。
+其实我是一个 Vue 粉，但这次我选择了 React。有人说过：Vue 更适合做 Web Pages，而 React 更适合做 Web App。我很认同这一点，并且对于这个项目而言，React 比较适合_（纯属个人看法）_，特别配合 TypeScript，开发体验也是挺不错的。
 
 引用 Vue.js 官网的一句话：
 
