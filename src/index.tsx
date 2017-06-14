@@ -9,6 +9,7 @@ import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
 import Snackbar from 'material-ui/Snackbar'
+import { blue800 } from 'material-ui/styles/colors'
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -35,7 +36,11 @@ type SkinSiteProfile = CSLConfig.MojangAPI
   | CSLConfig.ElfSkin
   | CSLConfig.CustomSkinAPIPlus
 
-const muiTheme = getMuiTheme()
+const muiTheme = getMuiTheme({
+  palette: {
+    primary1Color: blue800
+  }
+})
 injectTapEventPlugin()
 
 interface AppState {
