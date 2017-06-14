@@ -16,6 +16,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Highlight from 'highlight.js'
 
 import { DEFAULT_PROFILE, LATEST_CSL_VERSION } from './constants'
+import { swap } from './utils'
 import CSLOptions from './components/CSLOptions'
 import LoadList from './components/LoadList'
 import SkinSiteEdit from './components/SkinSiteProfileEditor/SkinSiteEdit'
@@ -165,6 +166,27 @@ class App extends React.Component<{}, AppState> {
                 />
                 <LoadList
                   names={this.state.cslConfig.loadlist.map(item => item.name)}
+                  onMoveUp={index => this.setState({
+                    cslConfig: assign(
+                      {},
+                      this.state.cslConfig,
+                      { loadlist: swap(this.state.cslConfig.loadlist, index, index - 1) }
+                    )
+                  })}
+                  onMoveDown={index => this.setState({
+                    cslConfig: assign(
+                      {},
+                      this.state.cslConfig,
+                      { loadlist: swap(this.state.cslConfig.loadlist, index, index + 1) }
+                    )
+                  })}
+                  onMoveTop={index => this.setState({
+                    cslConfig: assign(
+                      {},
+                      this.state.cslConfig,
+                      { loadlist: swap(this.state.cslConfig.loadlist, index, 0) }
+                    )
+                  })}
                   onDeleteItem={index => {
                     const loadList = this.state.cslConfig.loadlist
                     const backup = loadList[index]
