@@ -253,7 +253,7 @@ class App extends React.Component<{}, AppState> {
                       return
                     }
                     const loadList = this.state.cslConfig.loadlist.slice()
-                    loadList[this.state.profileEditIndex] = profile
+                    loadList[this.state.profileEditIndex] = assign({}, profile)
                     this.setState({ cslConfig: assign({}, this.state.cslConfig, { loadlist: loadList }) })
                   }}
                   onSubmit={() => {
