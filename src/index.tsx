@@ -132,7 +132,7 @@ class App extends React.Component<{}, AppState> {
   undoSkinSiteDeletion () {
     this.setState({ skinSiteDeleted: false })
     if (this.state.lastDeletedIndex !== -1) {
-      const loadList = this.state.cslConfig.loadlist
+      const loadList = this.state.cslConfig.loadlist.slice()
       loadList.splice(this.state.lastDeletedIndex, 0, this.state.profileBackup)
       this.setState({
         cslConfig: assign({}, this.state.cslConfig, { loadlist: loadList }),
@@ -192,25 +192,25 @@ class App extends React.Component<{}, AppState> {
                     cslConfig: assign(
                       {},
                       this.state.cslConfig,
-                      { loadlist: swap(this.state.cslConfig.loadlist, index, index - 1) }
+                      { loadlist: swap(this.state.cslConfig.loadlist.slice(), index, index - 1) }
                     )
                   })}
                   onMoveDown={index => this.setState({
                     cslConfig: assign(
                       {},
                       this.state.cslConfig,
-                      { loadlist: swap(this.state.cslConfig.loadlist, index, index + 1) }
+                      { loadlist: swap(this.state.cslConfig.loadlist.slice(), index, index + 1) }
                     )
                   })}
                   onMoveTop={index => this.setState({
                     cslConfig: assign(
                       {},
                       this.state.cslConfig,
-                      { loadlist: swap(this.state.cslConfig.loadlist, index, 0) }
+                      { loadlist: swap(this.state.cslConfig.loadlist.slice(), index, 0) }
                     )
                   })}
                   onDeleteItem={index => {
-                    const loadList = this.state.cslConfig.loadlist
+                    const loadList = this.state.cslConfig.loadlist.slice()
                     const backup = loadList[index]
                     loadList.splice(index, 1)
                     this.setState({
@@ -225,12 +225,12 @@ class App extends React.Component<{}, AppState> {
                   }}
                   onEditItem={index => {
                     if (!this.state.isNewProfile) {
-                      const loadList = this.state.cslConfig.loadlist
+                      const loadList = this.state.cslConfig.loadlist.slice()
                       loadList[this.state.profileEditIndex] = this.state.profileBackup
                       this.setState({ cslConfig: assign({}, this.state.cslConfig, { loadlist: loadList }) })
                     }
                     this.setState({
-                      profileBackup: this.state.cslConfig.loadlist[index],
+                      profileBackup: assign({}, this.state.cslConfig.loadlist[index]),
                       isNewProfile: false,
                       profileEditIndex: index
                     })
@@ -242,23 +242,23 @@ class App extends React.Component<{}, AppState> {
                   profile={
                     this.state.isNewProfile
                       ? (this.state.lastDeletedIndex === -1
-                        ? this.state.profileBackup
+                        ? assign({}, this.state.profileBackup)
                         : DEFAULT_PROFILE)
-                      : this.state.cslConfig.loadlist[this.state.profileEditIndex]
+                      : assign({}, this.state.cslConfig.loadlist[this.state.profileEditIndex])
                   }
                   isNewProfile={this.state.isNewProfile}
                   onChange={profile => {
                     if (this.state.isNewProfile) {
-                      this.setState({ profileBackup: profile })
+                      this.setState({ profileBackup: assign({}, profile) })
                       return
                     }
-                    const loadList = this.state.cslConfig.loadlist
+                    const loadList = this.state.cslConfig.loadlist.slice()
                     loadList[this.state.profileEditIndex] = profile
                     this.setState({ cslConfig: assign({}, this.state.cslConfig, { loadlist: loadList }) })
                   }}
                   onSubmit={() => {
                     if (this.state.isNewProfile) {
-                      const loadList = this.state.cslConfig.loadlist
+                      const loadList = this.state.cslConfig.loadlist.slice()
                       loadList.push(this.state.profileBackup)
                       this.setState({ cslConfig: assign({}, this.state.cslConfig, { loadlist: loadList }) })
                     }
@@ -273,8 +273,8 @@ class App extends React.Component<{}, AppState> {
                       this.setState({ profileBackup: DEFAULT_PROFILE })
                       return
                     }
-                    const loadList = this.state.cslConfig.loadlist
-                    loadList[this.state.profileEditIndex] = this.state.profileBackup
+                    const loadList = this.state.cslConfig.loadlist.slice()
+                    loadList[this.state.profileEditIndex] = assign({}, this.state.profileBackup)
                     this.setState({
                       profileBackup: DEFAULT_PROFILE,
                       isNewProfile: true,
