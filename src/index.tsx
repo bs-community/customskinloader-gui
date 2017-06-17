@@ -285,6 +285,17 @@ class App extends React.Component<{}, AppState> {
               </Cell>
               <Cell is="5 tablet-12 phone-12">
                 <div style={{ marginTop: '5px' }}>
+                  <div>
+                    <small>
+                      如果您喜欢这个工具，不妨去{' '}
+                      <a
+                        href="https://github.com/g-plane/customskinloader-gui-react/"
+                        target="_blank"
+                        style={{ color: '#2e5cfc' }}
+                      >GitHub</a>
+                      {' '}给个 Star
+                    </small>
+                  </div>
                   <RaisedButton label="点我下载" onClick={() => this.downloadFile()}></RaisedButton>
                   <span style={{ marginLeft: '5px' }}>也可以直接复制下面的结果</span>
                   <div>
