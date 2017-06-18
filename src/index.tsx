@@ -152,7 +152,7 @@ class App extends React.Component<{}, AppState> {
       }
       return (newItem as CSLConfig.API)
     })
-    return JSON.stringify(cslConfig, null, 4)
+    return JSON.stringify(cslConfig, null, 2)
   }
 
   render () {
