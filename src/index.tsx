@@ -195,13 +195,6 @@ class App extends React.Component<{}, AppState> {
                       { loadlist: swap(this.state.cslConfig.loadlist.slice(), index, index - 1) }
                     )
                   })}
-                  onMoveDown={index => this.setState({
-                    cslConfig: assign(
-                      {},
-                      this.state.cslConfig,
-                      { loadlist: swap(this.state.cslConfig.loadlist.slice(), index, index + 1) }
-                    )
-                  })}
                   onMoveTop={index => this.setState({
                     cslConfig: assign(
                       {},

@@ -4,14 +4,13 @@ import { List, ListItem } from 'material-ui/List'
 import IconButton from 'material-ui/IconButton'
 import EditorPublishIcon from 'material-ui/svg-icons/editor/publish'
 import NavigationArrowUpwardIcon from 'material-ui/svg-icons/navigation/arrow-upward'
-import NavigationArrowDownwardIcon from 'material-ui/svg-icons/navigation/arrow-downward'
 import ActionDeleteIcon from 'material-ui/svg-icons/action/delete'
+import ContentCreateIcon from 'material-ui/svg-icons/content/create'
 
 interface LoadListProps {
   names: string[]
   onEditItem (index: number)
   onMoveUp (index: number)
-  onMoveDown (index: number)
   onMoveTop (index: number)
   onDeleteItem (index: number)
 }
@@ -34,17 +33,12 @@ class LoadList extends React.Component<LoadListProps, { dialogOpen: boolean }> {
             primaryText={name}
             rightIconButton={
               <div>
+                <IconButton><ContentCreateIcon /></IconButton>
                 <IconButton onClick={event => {
                   event.stopPropagation()
                   this.props.onMoveUp(index)
                 }}>
                   <NavigationArrowUpwardIcon />
-                </IconButton>
-                <IconButton onClick={event => {
-                  event.stopPropagation()
-                  this.props.onMoveDown(index)
-                }}>
-                  <NavigationArrowDownwardIcon />
                 </IconButton>
                 <IconButton onClick={event => {
                   event.stopPropagation()
