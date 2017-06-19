@@ -33,7 +33,6 @@ type SkinSiteProfile = CSLConfig.MojangAPI
   | CSLConfig.CustomSkinAPI
   | CSLConfig.UniSkinAPI
   | CSLConfig.Legacy
-  | CSLConfig.ElfSkin
   | CSLConfig.CustomSkinAPIPlus
 
 const muiTheme = getMuiTheme({

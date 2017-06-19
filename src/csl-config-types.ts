@@ -14,7 +14,7 @@ export interface CSLConfig {
 
 export interface API {
   name: string
-  type: 'MojangAPI' | 'CustomSkinAPI' | 'UniSkinAPI' | 'Legacy' | 'CustomSkinAPIPlus' | 'ElfSkin'
+  type: 'MojangAPI' | 'CustomSkinAPI' | 'UniSkinAPI' | 'Legacy' | 'CustomSkinAPIPlus'
 }
 
 export interface JsonAPI extends API {
@@ -42,8 +42,4 @@ export interface Legacy extends API {
 
 export interface CustomSkinAPIPlus extends API {
   root: string
-}
-
-export interface ElfSkin extends API {
-  userAgent: string
 }

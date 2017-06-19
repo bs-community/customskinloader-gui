@@ -10,12 +10,10 @@ import ContentClearIcon from 'material-ui/svg-icons/content/clear'
 import MojangAPIForm from './MojangAPI'
 import JsonAPIForm from './JsonAPI'
 import LegacyForm from './Legacy'
-import ElfSkinForm from './ElfSkinAPI'
 
 import {
   CustomSkinAPI,
   CustomSkinAPIPlus,
-  ElfSkin,
   JsonAPI,
   Legacy,
   MojangAPI,
@@ -26,7 +24,6 @@ type SkinSiteProfile = MojangAPI
   | CustomSkinAPI
   | UniSkinAPI
   | Legacy
-  | ElfSkin
   | CustomSkinAPIPlus
 
 class SkinSiteEdit extends React.Component<{
@@ -71,15 +68,6 @@ class SkinSiteEdit extends React.Component<{
             onChange={profile => this.props.onChange(profile)}
           />
         )
-      case 'ElfSkin':
-        return (
-          <ElfSkinForm
-            type={this.props.profile.type}
-            name={this.props.profile.name}
-            userAgent={(this.props.profile as ElfSkin).userAgent}
-            onChange={profile => this.props.onChange(profile)}
-          />
-        )
       case 'CustomSkinAPIPlus':
       default:
         return <div />
@@ -100,7 +88,6 @@ class SkinSiteEdit extends React.Component<{
           <MenuItem value="CustomSkinAPI" primaryText="CustomSkin API"></MenuItem>
           <MenuItem value="UniSkinAPI" primaryText="UniSkin API"></MenuItem>
           <MenuItem value="Legacy" primaryText="传统方式"></MenuItem>
-          <MenuItem value="ElfSkin" primaryText="精灵换肤器"></MenuItem>
           <MenuItem value="CustomSkinAPIPlus" primaryText="高级 CustomSkin API" disabled={true}></MenuItem>
         </SelectField>
         {this.renderApiForm()}
