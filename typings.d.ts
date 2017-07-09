@@ -7,3 +7,21 @@ declare module 'react-inline-grid' {
 
   export class Cell extends React.Component<{ is: string }, null> { }
 }
+
+declare module 'gulp-zip' {
+  export default function (fileName: string)
+}
+
+declare module 'execa' {
+  export default function (file: string, arguments?: string[], options?: Object)
+
+  export function stdout (file: string, arguments?: string[], options?: Object)
+
+  export function stderr (file: string, arguments?: string[], options?: Object)
+
+  export function shell (command: string, options?: Object)
+
+  export function sync (file: string, arguments?: string[], options?: Object)
+
+  export function shellSync (command: string, options?: Object)
+}
