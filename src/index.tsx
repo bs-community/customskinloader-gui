@@ -22,7 +22,7 @@ import {
   TIP_TEXT,
   TIP_TEXT_INTERVAL
 } from './constants'
-import { swap } from './utils'
+import * as utils from './utils'
 import CSLOptions from './components/CSLOptions'
 import LoadList from './components/LoadList'
 import SkinSiteEdit from './components/SkinSiteProfileEditor/SkinSiteEdit'
@@ -98,13 +98,6 @@ class App extends React.Component<{}, AppState> {
 
   componentDidUpdate () {
     Highlight.highlightBlock(ReactDOM.findDOMNode(this.refs.jsonResult))
-  }
-
-  downloadFile () {
-    const downloadLink = document.createElement('a')
-    downloadLink.href = `data:application/json,${encodeURI(this.generateJson())}`
-    downloadLink.download = 'CustomSkinLoader.json'
-    downloadLink.click()
   }
 
   chooseFile () {
@@ -191,14 +184,14 @@ class App extends React.Component<{}, AppState> {
                     cslConfig: assign(
                       {},
                       this.state.cslConfig,
-                      { loadlist: swap(this.state.cslConfig.loadlist.slice(), index, index - 1) }
+                      { loadlist: utils.swap(this.state.cslConfig.loadlist.slice(), index, index - 1) }
                     )
                   })}
                   onMoveTop={index => this.setState({
                     cslConfig: assign(
                       {},
                       this.state.cslConfig,
-                      { loadlist: swap(this.state.cslConfig.loadlist.slice(), index, 0) }
+                      { loadlist: utils.swap(this.state.cslConfig.loadlist.slice(), index, 0) }
                     )
                   })}
                   onDeleteItem={index => {
@@ -288,7 +281,10 @@ class App extends React.Component<{}, AppState> {
                       {' '}给个 Star
                     </small>
                   </div>
-                  <RaisedButton label="点我下载" onClick={() => this.downloadFile()}></RaisedButton>
+                  <RaisedButton label="点我下载" onClick={() => utils.downloadFile(
+                    'CustomSkinLoader.json',
+                    `data:application/json,${encodeURI(JSON.stringify(this.generateJson()))}`
+                  )}></RaisedButton>
                   <span style={{ marginLeft: '5px' }}>也可以直接复制下面的结果</span>
                   <div>
                     <small style={{ color: '#757575' }}>
