@@ -2,6 +2,10 @@
 
 在线试用：https://g-plane.github.io/customskinloader-gui-react/
 
+[![Travis CI Build Status](https://travis-ci.org/g-plane/customskinloader-gui-react.svg?branch=master)](https://travis-ci.org/g-plane/customskinloader-gui-react)
+[![Circle CI Build Status](https://circleci.com/gh/g-plane/customskinloader-gui-react.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/g-plane/customskinloader-gui-react/)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva?svg=true)](https://ci.appveyor.com/project/g-plane/customskinloader-gui-react)
+
 ## 为什么会有这个？
 
 考虑到 [CustomSkinLoader v2](https://github.com/g-plane/CustomSkinLoader-GUI) 的体积有些大（因为它基于 PyQt5 制作），也许有些人会难以接受。因此我做个 Web 版，它既可以放在电脑本地，然后直接双击并在浏览器中打开；也可以根据需要放在服务器。
