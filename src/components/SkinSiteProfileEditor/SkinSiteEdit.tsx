@@ -12,6 +12,7 @@ import JsonAPIForm from './JsonAPI'
 import LegacyForm from './Legacy'
 
 import {
+  APIType,
   CustomSkinAPI,
   CustomSkinAPIPlus,
   JsonAPI,
@@ -35,16 +36,16 @@ class SkinSiteEdit extends React.Component<{
 }, null> {
   renderApiForm () {
     switch (this.props.profile.type) {
-      case 'MojangAPI':
+      case APIType.MojangAPI:
         return (
           <MojangAPIForm
-            type="MojangAPI"
+            type={APIType.MojangAPI}
             name={this.props.profile.name}
             onChange={profile => this.props.onChange(profile)}
           />
         )
-      case 'CustomSkinAPI':
-      case 'UniSkinAPI':
+      case APIType.CustomSkinAPI:
+      case APIType.UniSkinAPI:
         return (
           <JsonAPIForm
             type={this.props.profile.type}
@@ -54,7 +55,7 @@ class SkinSiteEdit extends React.Component<{
             onChange={profile => this.props.onChange(profile)}
           />
         )
-      case 'Legacy':
+      case APIType.Legacy:
         return (
           <LegacyForm
             type={this.props.profile.type}
@@ -68,7 +69,7 @@ class SkinSiteEdit extends React.Component<{
             onChange={profile => this.props.onChange(profile)}
           />
         )
-      case 'CustomSkinAPIPlus':
+      case APIType.CustomSkinAPIPlus:
       default:
         return <div />
     }

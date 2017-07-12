@@ -12,9 +12,17 @@ export interface CSLConfig {
   version: string
 }
 
+export enum APIType {
+  MojangAPI = 'MojangAPI',
+  CustomSkinAPI = 'CustomSkinAPI',
+  UniSkinAPI = 'UniSkinAPI',
+  Legacy = 'Legacy',
+  CustomSkinAPIPlus = 'CustomSkinAPIPlus'
+}
+
 export interface API {
   name: string
-  type: 'MojangAPI' | 'CustomSkinAPI' | 'UniSkinAPI' | 'Legacy' | 'CustomSkinAPIPlus'
+  type: APIType
 }
 
 export interface JsonAPI extends API {
