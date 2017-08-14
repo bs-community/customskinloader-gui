@@ -83,6 +83,11 @@ class App extends React.Component<{}, AppState> {
       currentTipTextIndex: 0
     }
 
+    this.chooseFile = this.chooseFile.bind(this)
+    this.undoSkinSiteDeletion = this.undoSkinSiteDeletion.bind(this)
+    this.generateJson = this.generateJson.bind(this)
+    this.onCSLOptionsChanged = this.onCSLOptionsChanged.bind(this)
+
     Highlight.initHighlightingOnLoad()
   }
 
@@ -147,6 +152,20 @@ class App extends React.Component<{}, AppState> {
     return JSON.stringify(cslConfig, null, 2)
   }
 
+  onCSLOptionsChanged (property: string, value: boolean | number) {
+    this.setState({ cslConfig: assign({}, this.state.cslConfig, { [property]: value }) })
+  }
+
+  onSkinSiteItemMoveUp (index: number) {
+    this.setState({
+      cslConfig: assign(
+        {},
+        this.state.cslConfig,
+        { loadlist: utils.swap(this.state.cslConfig.loadlist.slice(), index, index - 1) }
+      )
+    })
+  }
+
   render () {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
@@ -156,7 +175,7 @@ class App extends React.Component<{}, AppState> {
             showMenuIconButton={false}
             iconElementRight={
               <div>
-                <RaisedButton label="打开配置文件" secondary={true} onClick={e => this.chooseFile()} />
+                <RaisedButton label="打开配置文件" secondary={true} onClick={this.chooseFile} />
               </div>
             }
           />
@@ -174,9 +193,7 @@ class App extends React.Component<{}, AppState> {
                   enableLocalProfileCache={this.state.cslConfig.enableLocalProfileCache}
                   enableCacheAutoClean={this.state.cslConfig.enableCacheAutoClean}
                   cacheExpiry={this.state.cslConfig.cacheExpiry}
-                  onChange={(property, value: boolean | number) => {
-                    this.setState({ cslConfig: assign({}, this.state.cslConfig, { [property]: value }) })
-                  }}
+                  onChange={this.onCSLOptionsChanged}
                 />
                 <LoadList
                   names={this.state.cslConfig.loadlist.map(item => item.name)}
@@ -315,7 +332,7 @@ class App extends React.Component<{}, AppState> {
             message={this.state.lastDeletedIndex !== -1 ? `已删除 ${this.state.profileBackup.name}` : ''}
             autoHideDuration={3000}
             action="撤销"
-            onActionTouchTap={event => this.undoSkinSiteDeletion()}
+            onActionTouchTap={this.undoSkinSiteDeletion}
             onRequestClose={event => this.setState({
               skinSiteDeleted: false,
               lastDeletedIndex: -1,
