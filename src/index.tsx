@@ -69,6 +69,7 @@ class App extends React.Component<{}, AppState> {
         enableUpdateSkull: false,
         enableLocalProfileCache: false,
         enableCacheAutoClean: false,
+        forceLoadAllTextures: false,
         cacheExpiry: 0,
         version: LATEST_CSL_VERSION,
         loadlist: []
@@ -183,7 +184,7 @@ class App extends React.Component<{}, AppState> {
             <Row>
               <Cell is="3 tablet-12 phone-12">
                 <CSLOptions
-                  style={{ marginTop: '10px', marginLeft: '10px', width: '85%' }}
+                  style={{ marginTop: '10px', marginLeft: '10px', width: '90%' }}
                   enable={this.state.cslConfig.enable}
                   enableSkull={this.state.cslConfig.enableSkull}
                   enableDynamicSkull={this.state.cslConfig.enableDynamicSkull}
@@ -192,6 +193,7 @@ class App extends React.Component<{}, AppState> {
                   enableUpdateSkull={this.state.cslConfig.enableUpdateSkull}
                   enableLocalProfileCache={this.state.cslConfig.enableLocalProfileCache}
                   enableCacheAutoClean={this.state.cslConfig.enableCacheAutoClean}
+                  forceLoadAllTextures={this.state.cslConfig.forceLoadAllTextures}
                   cacheExpiry={this.state.cslConfig.cacheExpiry}
                   onChange={this.onCSLOptionsChanged}
                 />

@@ -8,6 +8,7 @@ export interface CSLConfig {
   enableTransparentSkin: boolean
   enableUpdateSkull: boolean
   ignoreHttpsCertificate: boolean
+  forceLoadAllTextures: boolean
   loadlist: Array<API>
   version: string
 }

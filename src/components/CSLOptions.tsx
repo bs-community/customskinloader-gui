@@ -12,6 +12,7 @@ interface CSLOption {
   enableTransparentSkin: boolean
   enableUpdateSkull: boolean
   ignoreHttpsCertificate: boolean
+  forceLoadAllTextures: boolean
   onChange (property: string, value: boolean | number): void
   style?: Object
 }
@@ -25,6 +26,7 @@ const tips = {
   enableTransparentSkin: '此项可设置是否启用透明皮肤，默认开启。',
   enableUpdateSkull: '此项可设置是否开启头颅更新，默认关闭。\n易引发卡顿，不建议开启。',
   ignoreHttpsCertificate: '此项设置是否忽略全局 HTTPS 证书，默认关闭。',
+  forceLoadAllTextures: '此项设置是否即加载皮肤又加载披风后才停止加载，\n不开启的默认逻辑是有任意皮肤站提供了任意材质就停止加载，不建议开启。',
 }
 
 const toggleButtonStyle = {
@@ -87,6 +89,13 @@ function CSLOptions (props: CSLOption) {
         checked={props.enableCacheAutoClean}
         onToggle={(event, isInputChecked) => props.onChange('enableCacheAutoClean', isInputChecked)}
         title={tips.enableCacheAutoClean}
+        style={toggleButtonStyle}
+      />
+      <Toggle
+        label="加载皮肤又加载披风后才停止加载"
+        checked={props.forceLoadAllTextures}
+        onToggle={(event, isInputChecked) => props.onChange('forceLoadAllTextures', isInputChecked)}
+        title={tips.forceLoadAllTextures}
         style={toggleButtonStyle}
       />
       <TextField
