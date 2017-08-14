@@ -15,6 +15,7 @@ describe('Render CSLOptions component', () => {
       enableTransparentSkin={false}
       enableUpdateSkull={false}
       ignoreHttpsCertificate={false}
+      forceLoadAllTextures={false}
       cacheExpiry={10}
       onChange={(prop, value) => false}
     />
@@ -44,8 +45,11 @@ describe('Render CSLOptions component', () => {
   it('render label of "enableCacheAutoClean" option', () => {
     expect(wrapper.childAt(7).prop('label')).toBe('启动游戏时清理所有缓存')
   })
+  it('render label of "forceLoadAllTextures" option', () => {
+    expect(wrapper.childAt(8).prop('label')).toBe('加载皮肤又加载披风后才停止加载')
+  })
   it('render floating label text of "cacheExpiry" option', () => {
-    expect(wrapper.childAt(8).prop('floatingLabelText')).toBe('缓存有效期（秒）')
+    expect(wrapper.childAt(9).prop('floatingLabelText')).toBe('缓存有效期（秒）')
   })
 
   it('render hover text of "enable" option', () => {
@@ -82,10 +86,14 @@ describe('Render CSLOptions component', () => {
     expect(wrapper.childAt(7).prop('title'))
       .toBe('此项可设置是否在启动时清理所有缓存，默认关闭。\n若开启了本地皮肤信息缓存，则强制不清理。')
   })
+  it('render hover text of "forceLoadAllTextures" option', () => {
+    expect(wrapper.childAt(8).prop('title'))
+      .toBe('此项设置是否即加载皮肤又加载披风后才停止加载，\n不开启的默认逻辑是有任意皮肤站提供了任意材质就停止加载，不建议开启。')
+  })
   it('render error text of "cacheExpiry" option', () => {
-    expect(wrapper.childAt(8).prop('errorText')).toBe('')
+    expect(wrapper.childAt(9).prop('errorText')).toBe('')
     wrapper.setProps({ cacheExpiry: undefined })
-    expect(wrapper.childAt(8).prop('errorText')).toBe('不能为空，默认值是 10')
+    expect(wrapper.childAt(9).prop('errorText')).toBe('不能为空，默认值是 10')
   })
 
   it('change value of "enable" option', () => {
@@ -120,8 +128,12 @@ describe('Render CSLOptions component', () => {
     wrapper.setProps({ enableCacheAutoClean: true })
     expect(wrapper.childAt(7).prop('checked')).toBe(true)
   })
+  it('change value of "forceLoadAllTextures" option', () => {
+    wrapper.setProps({ forceLoadAllTextures: true })
+    expect(wrapper.childAt(8).prop('checked')).toBe(true)
+  })
   it('change value of "cacheExpiry" option', () => {
     wrapper.setProps({ cacheExpiry: 20 })
-    expect(wrapper.childAt(8).prop('value')).toBe(20)
+    expect(wrapper.childAt(9).prop('value')).toBe(20)
   })
 })
