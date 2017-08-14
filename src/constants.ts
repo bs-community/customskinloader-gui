@@ -7,7 +7,7 @@ export const DEFAULT_PROFILE: CustomSkinAPI = {
   userAgent: ''
 }
 
-export const LATEST_CSL_VERSION = '14.6a'
+export const LATEST_CSL_VERSION = '14.7'
 
 export const TIP_TEXT_INTERVAL = 5
 
