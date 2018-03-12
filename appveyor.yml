@@ -1,8 +1,0 @@
-install:
-  - ps: Install-Product node 8
-  - npm install
-
-test_script:
-  - npm test
-
-build: off
