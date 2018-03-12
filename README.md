@@ -23,11 +23,3 @@
 - React 版是基于 Web 的，所以对浏览器有一定的要求（至少支持 ES5）；Python 版的只要能运行，就不会有其它兼容问题。
 
 - React 版仅仅提供对 CSL 的配置文件修改；Python 版还提供了皮肤站连接测试、本地皮肤管理等功能（当然，也许你觉得这些是多余的）。
-
-## Vue or React?
-
-其实我是一个 Vue 粉，但这次我选择了 React。有人说过：Vue 更适合做 Web Pages，而 React 更适合做 Web App。我很认同这一点，并且对于这个项目而言，React 比较适合_（纯属个人看法）_，特别配合 TypeScript，开发体验也是挺不错的。
-
-引用 Vue.js 官网的一句话：
-
-> On a higher level, we can divide components into two categories: presentational ones and logical ones. We recommend using templates for presentational components and render function / JSX for logical ones.
