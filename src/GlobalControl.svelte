@@ -48,6 +48,9 @@
     width: calc(100vw - 80px);
     margin-bottom: var(--sl-spacing-small);
   }
+  sl-card::part(footer) {
+    display: none;
+  }
   sl-card > div {
     display: flex;
     justify-content: space-between;
