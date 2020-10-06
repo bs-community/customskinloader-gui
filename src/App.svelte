@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { Components } from '@shoelace-style/shoelace'
   import hljs from 'highlight.js/lib/core'
   import HelpText from './HelpText.svelte'
   import GlobalControl from './GlobalControl.svelte'
@@ -71,6 +72,22 @@
 
     setTimeout(() => (copied = false), 2000)
   }
+
+  async function acceptLocalConfig({ detail }: { detail: CSLConfig }) {
+    Object.keys(config).forEach((key) => {
+      const k = key as keyof CSLConfig
+      const value = detail[k]
+      if (typeof config[k] === 'boolean' && typeof value === 'boolean') {
+        const el = document.querySelector<Components.SlSwitch & Element>(
+          `sl-switch[data-config-name=${k}]`
+        )
+        el!.checked = value
+      } else {
+        // @ts-ignore
+        config[k] = value
+      }
+    })
+  }
 </script>
 
 <style>
@@ -114,7 +131,7 @@
   }
 </style>
 
-<GlobalControl />
+<GlobalControl on:acceptLocal={acceptLocalConfig} />
 
 <main>
   <div id="basic-options">
@@ -145,6 +162,7 @@
     <label for="thread-pool-size">加载皮肤和头颅的线程池大小</label>
     <sl-range
       id="thread-pool-size"
+      value={config.threadPoolSize}
       min="1"
       max="16"
       on:slChange={updateThreadPoolSize} />

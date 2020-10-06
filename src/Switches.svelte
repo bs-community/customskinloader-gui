@@ -18,13 +18,17 @@
 </style>
 
 <div>
-  <sl-switch checked={enable} on:slChange={() => (enable = !enable)}>
+  <sl-switch
+    data-config-name="enable"
+    checked={enable}
+    on:slChange={() => (enable = !enable)}>
     启用 CustomSkinLoader
   </sl-switch>
 </div>
 
 <div>
   <sl-switch
+    data-config-name="enableSkull"
     checked={enableSkull}
     on:slChange={() => (enableSkull = !enableSkull)}>
     启用头颅加载
@@ -33,6 +37,7 @@
 
 <div>
   <sl-switch
+    data-config-name="enableDynamicSkull"
     checked={enableDynamicSkull}
     on:slChange={() => (enableDynamicSkull = !enableDynamicSkull)}>
     启用动态头颅
@@ -41,6 +46,7 @@
 
 <div>
   <sl-switch
+    data-config-name="enableTransparentSkin"
     checked={enableTransparentSkin}
     on:slChange={() => (enableTransparentSkin = !enableTransparentSkin)}>
     启用透明皮肤
@@ -49,6 +55,7 @@
 
 <div>
   <sl-switch
+    data-config-name="ignoreHttpsCertificate"
     checked={ignoreHttpsCertificate}
     on:slChange={() => (ignoreHttpsCertificate = !ignoreHttpsCertificate)}>
     忽略全局 HTTPS 证书
@@ -57,6 +64,7 @@
 
 <div>
   <sl-switch
+    data-config-name="enableUpdateSkull"
     title="易引发卡顿，不建议开启。"
     checked={enableUpdateSkull}
     on:slChange={() => (enableUpdateSkull = !enableUpdateSkull)}>
@@ -66,6 +74,7 @@
 
 <div>
   <sl-switch
+    data-config-name="enableLocalProfileCache"
     title="开启后可在无网络时继续使用缓存的皮肤，不建议在网络状态稳定时仍然开启。"
     checked={enableLocalProfileCache}
     on:slChange={() => (enableLocalProfileCache = !enableLocalProfileCache)}>
@@ -75,6 +84,7 @@
 
 <div>
   <sl-switch
+    data-config-name="enableCacheAutoClean"
     title="若开启了本地皮肤信息缓存，则强制不清理。"
     checked={enableCacheAutoClean}
     on:slChange={() => (enableCacheAutoClean = !enableCacheAutoClean)}>
@@ -84,6 +94,7 @@
 
 <div>
   <sl-switch
+    data-config-name="forceLoadAllTextures"
     title="不开启的默认逻辑是有任意皮肤站提供了任意材质就停止加载，不建议开启。"
     checked={forceLoadAllTextures}
     on:slChange={() => (forceLoadAllTextures = !forceLoadAllTextures)}>
@@ -93,6 +104,7 @@
 
 <div>
   <sl-switch
+    data-config-name="enableCape"
     checked={enableCape}
     on:slChange={() => (enableCape = !enableCape)}>
     允许加载披风

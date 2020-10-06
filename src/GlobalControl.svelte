@@ -1,5 +1,8 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
+  import { createEventDispatcher, onMount } from 'svelte'
+  import FileInput from './FileInput.svelte'
+
+  const dispatch = createEventDispatcher()
 
   let lightCSS = document.createElement('link')
   let darkCSS = document.createElement('link')
@@ -61,7 +64,7 @@
 <sl-card>
   <div>
     <div>
-      <sl-button disabled type="primary">打开本地配置文件</sl-button>
+      <FileInput on:input={({ detail }) => dispatch('acceptLocal', detail)} />
     </div>
     <div>
       <sl-switch checked={darkMode} on:slChange={() => (darkMode = !darkMode)}>
