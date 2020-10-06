@@ -1,0 +1,13 @@
+body.sl-theme-dark sl-details::part(summary),
+body.sl-theme-dark sl-details::part(summary-icon),
+body.sl-theme-dark label,
+body.sl-theme-dark sl-menu-item,
+body.sl-theme-dark sl-input::part(label) {
+  color: var(--sl-input-color);
+}
+
+#item-editor sl-input,
+#item-editor sl-details,
+#item-editor sl-button {
+  margin-top: var(--sl-spacing-x-small);
+}
