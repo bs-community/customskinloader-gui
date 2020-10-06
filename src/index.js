@@ -6,6 +6,9 @@ import App from './App.svelte'
 
 hljs.registerLanguage('json', json)
 
+// stop logging of "svelte-dnd-action"
+console.debug = () => {}
+
 overrideItemIdKeyNameBeforeInitialisingDndZones('name')
 
 const app = new App({
