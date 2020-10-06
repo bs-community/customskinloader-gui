@@ -59,12 +59,22 @@
     justify-content: space-between;
     align-items: center;
   }
+
+  sl-button:not(:first-child) {
+    margin-left: var(--sl-spacing-x-small);
+  }
 </style>
 
 <sl-card>
   <div>
     <div>
       <FileInput on:input={({ detail }) => dispatch('acceptLocal', detail)} />
+      <sl-button
+        type="info"
+        href="https://github.com/bs-community/customskinloader-gui"
+        target="_blank">
+        View on GitHub
+      </sl-button>
     </div>
     <div>
       <sl-switch checked={darkMode} on:slChange={() => (darkMode = !darkMode)}>
