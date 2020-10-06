@@ -35,7 +35,7 @@
 </style>
 
 <sl-menu
-  use:dndzone={{ items, flipDurationMs, dropTargetStyle: {}, info: { id: 'name' } }}
+  use:dndzone={{ items, flipDurationMs, dropTargetStyle: {} }}
   on:consider={(e) => (items = e.detail.items)}
   on:finalize={(e) => (items = e.detail.items)}>
   {#each items as item, i (item.name)}
