@@ -4,8 +4,8 @@
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
-    "test": "svelte-check && prettier --check --plugin-search-dir=. src snowpack.config.js",
-    "fmt": "prettier --write --plugin-search-dir=. src snowpack.config.js"
+    "test": "svelte-check && prettier --check --plugin-search-dir=. src",
+    "fmt": "prettier --write --plugin-search-dir=. src"
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.0.0-beta.19",
