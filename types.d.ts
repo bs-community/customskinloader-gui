@@ -21,6 +21,22 @@ declare module 'svelte-dnd-action' {
   export function overrideItemIdKeyNameBeforeInitialisingDndZones(key: string)
 }
 
+type CSLConfig = {
+  enable: boolean
+  enableSkull: boolean
+  enableDynamicSkull: boolean
+  enableTransparentSkin: boolean
+  ignoreHttpsCertificate: boolean
+  cacheExpiry: number
+  enableUpdateSkull: boolean
+  enableLocalProfileCache: boolean
+  enableCacheAutoClean: boolean
+  forceLoadAllTextures: boolean
+  enableCape: boolean
+  threadPoolSize: number
+  loadlist: LoadListItem[]
+}
+
 type LoadListItem =
   | MojangAPI
   | CustomSkinAPI

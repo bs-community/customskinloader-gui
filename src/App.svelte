@@ -5,7 +5,7 @@
   import Switches from './Switches.svelte'
   import LoadList from './LoadList.svelte'
 
-  let config = {
+  let config: CSLConfig = {
     enable: true,
     enableSkull: true,
     enableDynamicSkull: true,
@@ -25,13 +25,13 @@
         type: 'CustomSkinAPI',
         root: 'https://littlesk.in/',
       },
-    ] as LoadListItem[],
+    ],
   }
   let copied = false
 
-  function serializeConfig(cfg: typeof config): string {
+  function serializeConfig(config: CSLConfig): string {
     return JSON.stringify(
-      cfg,
+      config,
       (key, value) => {
         if (key === 'isDndShadowItem') {
           return
