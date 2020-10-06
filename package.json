@@ -1,9 +1,10 @@
 {
-  "private": false,
+  "private": true,
   "license": "MIT",
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
+    "test": "svelte-check && prettier --check --plugin-search-dir=. src snowpack.config.js",
     "fmt": "prettier --write --plugin-search-dir=. src snowpack.config.js"
   },
   "dependencies": {
