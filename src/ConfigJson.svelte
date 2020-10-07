@@ -20,8 +20,12 @@
   sl-card {
     width: 43%;
   }
+  sl-card::part(body) {
+    padding: 0;
+  }
 
   code {
+    padding: var(--padding);
     font-size: 16px;
     font-family: Consolas, Monaco, 'Andale Mono', monospace;
   }
