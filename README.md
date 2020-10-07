@@ -1,5 +1,7 @@
 # CustomSkinLoader GUI
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/889914d5-9778-4820-a6cc-5497f99cc94c/deploy-status)](https://app.netlify.com/sites/mc-csl/deploys)
+
 Online CustomSkinLoader configuration editor.
 
 [Visit here!](https://mc-csl.netlify.app/)
