@@ -78,6 +78,9 @@
       const k = key as keyof CSLConfig
       const value = detail[k]
       if (typeof config[k] === 'boolean' && typeof value === 'boolean') {
+        // This isn't an elegant way to update config,
+        // however there seems a bug from "shoelace",
+        // so this is a workaround.
         const el = document.querySelector<Components.SlSwitch & Element>(
           `sl-switch[data-config-name=${k}]`
         )
