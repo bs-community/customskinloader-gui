@@ -1,29 +1,30 @@
-# New Project
+# CustomSkinLoader GUI
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+Online CustomSkinLoader configuration editor.
 
-## Available Scripts
+[Visit here!](https://mc-csl.netlify.app/)
 
-### npm start
+If some new configuration options from later CustomSkinLoader version are missing,
+please open an issue to let us know!
 
-Runs the app in the development mode.
-Open http://localhost:8080 to view it in the browser.
+## Features
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+- Open an existing local configuration then edit it.
+- Copy the JSON or download JSON file.
 
-### npm test
+## Contributing
 
-Launches the test runner in the interactive watch mode.
-See the section about running tests for more information.
+We use [pnpm](https://pnpm.js.org/) to manage our dependencies.
+Please use pnpm to install dependencies.
 
-### npm run build
+We're using [Svelte](https://svelte.dev/) as front-end framework,
+and build them with [snowpack](https://www.snowpack.dev/).
 
-Builds a static copy of your site to the `build/` folder.
-Your app is ready to be deployed!
+UI framework is [Shoelace](https://shoelace.style/),
+which is a Web Components library.
 
-**For the best production performance:** Add a build bundler plugin like "@snowpack/plugin-webpack" or "@snowpack/plugin-parcel" to your `snowpack.config.json` config file.
+## License
 
-### Q: What about Eject?
+MIT License
 
-No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
+2017-present (c) The Blessing Skin Team
