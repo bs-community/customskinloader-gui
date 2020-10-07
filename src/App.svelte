@@ -1,10 +1,10 @@
 <script lang="ts">
   import type { Components } from '@shoelace-style/shoelace'
-  import hljs from 'highlight.js/lib/core'
   import HelpText from './HelpText.svelte'
   import GlobalControl from './GlobalControl.svelte'
   import Switches from './Switches.svelte'
   import LoadList from './LoadList.svelte'
+  import ConfigJson from './ConfigJson.svelte'
 
   let config: CSLConfig = {
     enable: true,
@@ -28,7 +28,6 @@
       },
     ],
   }
-  let copied = false
 
   function serializeConfig(config: CSLConfig): string {
     return JSON.stringify(
@@ -63,15 +62,6 @@
   }
 
   $: json = serializeConfig(config)
-  $: code = hljs.highlight('json', json).value
-  $: downloadLink = `data:application/json,${encodeURI(json)}`
-
-  async function copyConfig() {
-    await navigator.clipboard.writeText(json)
-    copied = true
-
-    setTimeout(() => (copied = false), 2000)
-  }
 
   async function acceptLocalConfig({ detail }: { detail: CSLConfig }) {
     Object.keys(config).forEach((key) => {
@@ -120,18 +110,6 @@
     width: 30%;
     margin-right: 3%;
   }
-
-  code {
-    font-size: 16px;
-    font-family: Consolas, Monaco, 'Andale Mono', monospace;
-  }
-
-  #config-json {
-    width: 43%;
-  }
-  #config-json sl-button:not(:last-child) {
-    margin-right: var(--sl-spacing-x-small);
-  }
 </style>
 
 <GlobalControl on:acceptLocal={acceptLocalConfig} />
@@ -178,23 +156,5 @@
     <LoadList bind:items={config.loadlist} />
   </div>
 
-  <sl-card id="config-json">
-    <pre><code class="hljs language-json">{@html code}</code></pre>
-
-    <div slot="footer">
-      <sl-button
-        type="primary"
-        download="CustomSkinLoader.json"
-        href={downloadLink}>
-        下载
-      </sl-button>
-      <sl-button
-        type="primary"
-        disabled={copied}
-        aria-disabled={copied}
-        on:click={copyConfig}>
-        {#if copied}已{/if}复制
-      </sl-button>
-    </div>
-  </sl-card>
+  <ConfigJson {json} />
 </main>
