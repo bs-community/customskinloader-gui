@@ -15,14 +15,14 @@
   },
   "devDependencies": {
     "@gplane/tsconfig": "^2.0.0",
-    "@snowpack/app-scripts-svelte": "^1.8.5",
-    "@snowpack/plugin-dotenv": "^2.0.1",
-    "@snowpack/plugin-optimize": "^0.2.3",
-    "@snowpack/plugin-run-script": "^2.1.2",
-    "@snowpack/plugin-svelte": "^2.0.4",
+    "@snowpack/app-scripts-svelte": "^1.9.0",
+    "@snowpack/plugin-dotenv": "^2.0.4",
+    "@snowpack/plugin-optimize": "^0.2.6",
+    "@snowpack/plugin-run-script": "^2.1.7",
+    "@snowpack/plugin-svelte": "^3.0.1",
     "prettier": "^2.1.2",
     "prettier-plugin-svelte": "^1.4.0",
-    "snowpack": "^2.13.0",
+    "snowpack": "^2.15.0",
     "svelte-check": "^1.0.0",
     "svelte-preprocess": "^4.5.1"
   }
