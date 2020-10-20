@@ -1,6 +1,6 @@
 dependencies:
   '@shoelace-style/shoelace': 2.0.0-beta.19
-  highlight.js: 10.2.1
+  highlight.js: 10.3.1
   svelte: 3.29.0
   svelte-dnd-action: 0.6.2_svelte@3.29.0
 devDependencies:
@@ -14,7 +14,7 @@ devDependencies:
   prettier-plugin-svelte: 1.4.0_prettier@2.1.2+svelte@3.29.0
   snowpack: 2.13.1
   svelte-check: 1.0.55
-  svelte-preprocess: 4.3.2_svelte@3.29.0
+  svelte-preprocess: 4.5.1_svelte@3.29.0
 lockfileVersion: 5.1
 packages:
   /@babel/code-frame/7.10.4:
@@ -2603,10 +2603,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
-  /highlight.js/10.2.1:
+  /highlight.js/10.3.1:
     dev: false
     resolution:
-      integrity: sha512-A+sckVPIb9zQTUydC9lpRX1qRFO/N0OKEh0NwIr65ckvWA/oMY8v9P3+kGRK3w2ULSh9E8v5MszXafodQ6039g==
+      integrity: sha512-jeW8rdPdhshYKObedYg5XGbpVgb1/DT4AHvDFXhkU7UnGSIjy9kkJ7zHG7qplhFHMitTSzh5/iClKQk3Kb2RFQ==
   /html-minifier/4.0.0:
     dependencies:
       camel-case: 3.0.0
@@ -4381,7 +4381,7 @@ packages:
     requiresBuild: true
     resolution:
       integrity: sha512-CmIsCr62y34qGS10/SC1l1VkmX0kZR6wncbGgRJ1qJftLDMEaazC3bWqoqAlrqyQFvpO0+xb44GQm4RKi/9sLQ==
-  /svelte-preprocess/4.3.2_svelte@3.29.0:
+  /svelte-preprocess/4.5.1_svelte@3.29.0:
     dependencies:
       '@types/pug': 2.0.4
       '@types/sass': 1.16.0
@@ -4396,11 +4396,12 @@ packages:
       coffeescript: ^2.5.1
       less: ^3.11.3
       node-sass: '*'
-      postcss: ^7.0.32
+      postcss: ^7 || ^8
       postcss-load-config: ^2.1.0
       pug: ^3.0.0
       sass: ^1.26.8
       stylus: ^0.54.7
+      sugarss: ^2.0.0
       svelte: ^3.23.0
       typescript: ^3.9.5 || ^4.0.0
     peerDependenciesMeta:
@@ -4422,13 +4423,15 @@ packages:
         optional: true
       stylus:
         optional: true
+      sugarss:
+        optional: true
       svelte:
         optional: true
       typescript:
         optional: true
     requiresBuild: true
     resolution:
-      integrity: sha512-CmIsCr62y34qGS10/SC1l1VkmX0kZR6wncbGgRJ1qJftLDMEaazC3bWqoqAlrqyQFvpO0+xb44GQm4RKi/9sLQ==
+      integrity: sha512-fZiLMg+mJzp5y4bsvBtl6wE1WCp+s5L87BoKMONGLXk8HSZD5HuRJzxhM0yhM9LHF0jP5kYG22P2Vc/vrv4I0A==
   /svelte/3.28.0:
     dev: true
     engines:
@@ -4764,11 +4767,11 @@ specifiers:
   '@snowpack/plugin-optimize': ^0.2.3
   '@snowpack/plugin-run-script': ^2.1.2
   '@snowpack/plugin-svelte': ^2.0.4
-  highlight.js: ^10.2.1
+  highlight.js: ^10.3.1
   prettier: ^2.1.2
   prettier-plugin-svelte: ^1.4.0
   snowpack: ^2.13.0
-  svelte: ^3.24.0
+  svelte: ^3.29.0
   svelte-check: ^1.0.0
   svelte-dnd-action: ^0.6.2
-  svelte-preprocess: ^4.3.2
+  svelte-preprocess: ^4.5.1
