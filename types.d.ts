@@ -1,5 +1,5 @@
 declare module 'highlight.js/lib/core' {
-  export function highlight(language: string, code: string): { value: string }
+  export * from 'highlight.js'
 }
 
 declare module 'svelte-dnd-action' {

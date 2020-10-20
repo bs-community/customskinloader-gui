@@ -4,7 +4,7 @@
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
-    "test": "svelte-check && prettier --check --plugin-search-dir=. src",
+    "test": "tsc -p . && svelte-check && prettier --check --plugin-search-dir=. src",
     "fmt": "prettier --write --plugin-search-dir=. src"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "@snowpack/plugin-optimize": "^0.2.6",
     "@snowpack/plugin-run-script": "^2.1.7",
     "@snowpack/plugin-svelte": "^3.0.1",
+    "@types/snowpack-env": "^2.3.0",
     "prettier": "^2.1.2",
     "prettier-plugin-svelte": "^1.4.0",
     "snowpack": "^2.15.0",

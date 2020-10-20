@@ -10,6 +10,7 @@ devDependencies:
   '@snowpack/plugin-optimize': 0.2.6
   '@snowpack/plugin-run-script': 2.1.7
   '@snowpack/plugin-svelte': 3.0.1_svelte@3.29.0
+  '@types/snowpack-env': 2.3.0
   prettier: 2.1.2
   prettier-plugin-svelte: 1.4.0_prettier@2.1.2+svelte@3.29.0
   snowpack: 2.15.0
@@ -1326,6 +1327,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-2XZovu4NwcqmtZtsBR5XYLw18T8cBCnU2USFHTnYLLHz9fkhnoEMoDsqShJIOFsFhn5aJHjweiUUdTrDGujegA==
+  /@types/snowpack-env/2.3.0:
+    dev: true
+    resolution:
+      integrity: sha512-wC/zq9A0IhlNyO469UPCOr3XZNTOXeGWiOJig9yWUZ0DkUOVNJinfFqC3vRzmlid6+CSiPw8GLvW/03F2/1vyg==
   /@types/yargs-parser/15.0.0:
     dev: true
     resolution:
@@ -4665,6 +4670,7 @@ specifiers:
   '@snowpack/plugin-optimize': ^0.2.6
   '@snowpack/plugin-run-script': ^2.1.7
   '@snowpack/plugin-svelte': ^3.0.1
+  '@types/snowpack-env': ^2.3.0
   highlight.js: ^10.3.1
   prettier: ^2.1.2
   prettier-plugin-svelte: ^1.4.0

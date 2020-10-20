@@ -1,3 +1,8 @@
 {
-  "extends": "@gplane/tsconfig"
+  "extends": "@gplane/tsconfig",
+  "compilerOptions": {
+    "types": ["svelte", "@types/snowpack-env"],
+    "noEmit": true,
+    "importsNotUsedAsValues": "error"
+  }
 }
