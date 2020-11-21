@@ -5,12 +5,13 @@
 
   export let items: LoadListItem[] = []
   let editing = -1
+  $: editingItem = items[editing]
 
   function switchType(event: Event) {
     const type = (event.target as HTMLInputElement)
       .value as LoadListItem['type']
 
-    const { name } = items[editing]
+    const { name } = items[editing]!
     switch (type) {
       case 'MojangAPI':
         items[editing] = { name, type: 'MojangAPI' }
@@ -60,7 +61,7 @@
       event.preventDefault()
       return
     }
-    items[editing].name = name
+    items[editing]!.name = name
   }
 </script>
 
@@ -87,48 +88,48 @@
 
 {#if editing === -1}
   <sl-button type="primary" on:click={addItem}>添加</sl-button>
-{:else}
+{:else if editingItem}
   <div id="item-editor">
     <div id="type-radios">
       <sl-radio
         name="type"
         value="MojangAPI"
-        checked={items[editing].type === 'MojangAPI'}
+        checked={editingItem.type === 'MojangAPI'}
         on:slChange={switchType}>
         MojangAPI
       </sl-radio>
       <sl-radio
         name="type"
         value="CustomSkinAPI"
-        checked={items[editing].type === 'CustomSkinAPI'}
+        checked={editingItem.type === 'CustomSkinAPI'}
         on:slChange={switchType}>
         CustomSkinAPI
       </sl-radio>
       <sl-radio
         name="type"
         value="UniSkinAPI"
-        checked={items[editing].type === 'UniSkinAPI'}
+        checked={editingItem.type === 'UniSkinAPI'}
         on:slChange={switchType}>
         UniSkinAPI
       </sl-radio>
       <sl-radio
         name="type"
         value="GlitchlessAPI"
-        checked={items[editing].type === 'GlitchlessAPI'}
+        checked={editingItem.type === 'GlitchlessAPI'}
         on:slChange={switchType}>
         GlitchlessAPI
       </sl-radio>
       <sl-radio
         name="type"
         value="Elyby"
-        checked={items[editing].type === 'Elyby'}
+        checked={editingItem.type === 'Elyby'}
         on:slChange={switchType}>
         Elyby
       </sl-radio>
       <sl-radio
         name="type"
         value="Legacy"
-        checked={items[editing].type === 'Legacy'}
+        checked={editingItem.type === 'Legacy'}
         on:slChange={switchType}>
         传统加载方式
       </sl-radio>
@@ -136,9 +137,9 @@
     <sl-input
       label="名称"
       required
-      value={items[editing].name}
+      value={editingItem.name}
       on:input={updateName} />
-    <LoadListItemEditor bind:item={items[editing]} />
+    <LoadListItemEditor bind:item={editingItem} />
     <sl-button type="primary" on:click={() => (editing = -1)}>完成</sl-button>
   </div>
 {/if}

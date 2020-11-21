@@ -8,23 +8,23 @@
     "fmt": "prettier --write --plugin-search-dir=. src"
   },
   "dependencies": {
-    "@shoelace-style/shoelace": "^2.0.0-beta.21",
-    "highlight.js": "^10.3.1",
-    "svelte": "^3.29.0",
-    "svelte-dnd-action": "^0.6.2"
+    "@shoelace-style/shoelace": "^2.0.0-beta.23",
+    "highlight.js": "^10.4.0",
+    "svelte": "^3.29.7",
+    "svelte-dnd-action": "^0.6.22"
   },
   "devDependencies": {
-    "@gplane/tsconfig": "^2.0.0",
-    "@snowpack/app-scripts-svelte": "^1.9.0",
+    "@gplane/tsconfig": "^4.0.0",
+    "@snowpack/app-scripts-svelte": "^1.9.2",
     "@snowpack/plugin-dotenv": "^2.0.4",
-    "@snowpack/plugin-optimize": "^0.2.6",
-    "@snowpack/plugin-run-script": "^2.1.7",
-    "@snowpack/plugin-svelte": "^3.0.1",
-    "@types/snowpack-env": "^2.3.0",
-    "prettier": "^2.1.2",
-    "prettier-plugin-svelte": "^1.4.0",
-    "snowpack": "^2.15.0",
-    "svelte-check": "^1.0.0",
-    "svelte-preprocess": "^4.5.1"
+    "@snowpack/plugin-optimize": "^0.2.9",
+    "@snowpack/plugin-run-script": "^2.2.0",
+    "@snowpack/plugin-svelte": "^3.3.0",
+    "@types/snowpack-env": "^2.3.2",
+    "prettier": "^2.2.0",
+    "prettier-plugin-svelte": "^1.4.1",
+    "snowpack": "^2.17.1",
+    "svelte-check": "^1.1.15",
+    "svelte-preprocess": "^4.6.1"
   }
 }
