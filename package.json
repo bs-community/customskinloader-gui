@@ -8,7 +8,7 @@
     "fmt": "prettier --write --plugin-search-dir=. src"
   },
   "dependencies": {
-    "@shoelace-style/shoelace": "^2.0.0-beta.23",
+    "@shoelace-style/shoelace": "^2.0.0-beta.25",
     "highlight.js": "^10.4.0",
     "svelte": "^3.29.7",
     "svelte-dnd-action": "^0.6.22"
