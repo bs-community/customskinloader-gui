@@ -32,12 +32,6 @@
   }
 </script>
 
-<style>
-  input {
-    display: none;
-  }
-</style>
-
 <sl-button type="primary" on:click={openFilePicker}>打开本地配置文件</sl-button>
 <input type="file" on:input={handleFileInput} bind:this={input} />
 
@@ -47,3 +41,9 @@
     好
   </sl-button>
 </sl-dialog>
+
+<style>
+  input {
+    display: none;
+  }
+</style>

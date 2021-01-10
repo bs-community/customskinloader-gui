@@ -46,6 +46,23 @@
   })
 </script>
 
+<sl-card>
+  <div>
+    <div>
+      <FileInput on:input={({ detail }) => dispatch('acceptLocal', detail)} />
+      <sl-button
+        type="info"
+        href="https://github.com/bs-community/customskinloader-gui"
+        target="_blank"> View on GitHub </sl-button>
+    </div>
+    <div>
+      <sl-switch checked={darkMode} on:slChange={() => (darkMode = !darkMode)}>
+        夜间模式
+      </sl-switch>
+    </div>
+  </div>
+</sl-card>
+
 <style>
   sl-card {
     width: calc(100vw - 80px);
@@ -64,22 +81,3 @@
     margin-left: var(--sl-spacing-x-small);
   }
 </style>
-
-<sl-card>
-  <div>
-    <div>
-      <FileInput on:input={({ detail }) => dispatch('acceptLocal', detail)} />
-      <sl-button
-        type="info"
-        href="https://github.com/bs-community/customskinloader-gui"
-        target="_blank">
-        View on GitHub
-      </sl-button>
-    </div>
-    <div>
-      <sl-switch checked={darkMode} on:slChange={() => (darkMode = !darkMode)}>
-        夜间模式
-      </sl-switch>
-    </div>
-  </div>
-</sl-card>

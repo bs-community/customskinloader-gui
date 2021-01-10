@@ -17,6 +17,21 @@
   }
 </script>
 
+<sl-menu
+  use:dndzone={{ items, flipDurationMs, dropTargetStyle: {} }}
+  on:consider={(e) => (items = e.detail.items)}
+  on:finalize={(e) => (items = e.detail.items)}>
+  {#each items as item, i (item.name)}
+    <sl-menu-item on:click={() => editItem(i)}>
+      {item.name}
+      <span slot="suffix">
+        <sl-icon name="pencil" on:click={() => editItem(i)} />
+        <sl-icon name="trash" on:click={() => removeItem(i)} />
+      </span>
+    </sl-menu-item>
+  {/each}
+</sl-menu>
+
 <style>
   sl-menu {
     border: 1px solid var(--sl-panel-border-color);
@@ -33,18 +48,3 @@
     margin-right: var(--sl-spacing-small);
   }
 </style>
-
-<sl-menu
-  use:dndzone={{ items, flipDurationMs, dropTargetStyle: {} }}
-  on:consider={(e) => (items = e.detail.items)}
-  on:finalize={(e) => (items = e.detail.items)}>
-  {#each items as item, i (item.name)}
-    <sl-menu-item on:click={() => editItem(i)}>
-      {item.name}
-      <span slot="suffix">
-        <sl-icon name="pencil" on:click={() => editItem(i)} />
-        <sl-icon name="trash" on:click={() => removeItem(i)} />
-      </span>
-    </sl-menu-item>
-  {/each}
-</sl-menu>

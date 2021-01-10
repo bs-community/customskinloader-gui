@@ -83,6 +83,55 @@
   }
 </script>
 
+<GlobalControl on:acceptLocal={acceptLocalConfig} />
+
+<main>
+  <div id="basic-options">
+    <Switches
+      bind:enable={config.enable}
+      bind:enableSkull={config.enableSkull}
+      bind:enableDynamicSkull={config.enableDynamicSkull}
+      bind:enableTransparentSkin={config.enableTransparentSkin}
+      bind:ignoreHttpsCertificate={config.ignoreHttpsCertificate}
+      bind:enableUpdateSkull={config.enableUpdateSkull}
+      bind:enableLocalProfileCache={config.enableLocalProfileCache}
+      bind:enableCacheAutoClean={config.enableCacheAutoClean}
+      bind:forceLoadAllTextures={config.forceLoadAllTextures}
+      bind:enableCape={config.enableCape}
+    />
+
+    <sl-input
+      label="缓存有效期"
+      type="text"
+      inputmode="numeric"
+      value={config.cacheExpiry}
+      on:slInput={updateCacheExpiry}>
+      <span slot="suffix">秒</span>
+      <div slot="help-text">
+        不建议设置过小或过大。设置为 0 相当于关闭缓存。
+      </div>
+    </sl-input>
+
+    <label for="thread-pool-size">加载皮肤和头颅的线程池大小</label>
+    <sl-range
+      id="thread-pool-size"
+      value={config.threadPoolSize}
+      min="1"
+      max="16"
+      on:slChange={updateThreadPoolSize}
+    />
+    <HelpText>
+      游玩在线人数较多的服务器时，可以适当增大该项的值，但也请不要设置得太高。
+    </HelpText>
+  </div>
+
+  <div id="load-list">
+    <LoadList bind:items={config.loadlist} />
+  </div>
+
+  <ConfigJson {json} />
+</main>
+
 <style>
   main {
     display: flex;
@@ -111,50 +160,3 @@
     margin-right: 3%;
   }
 </style>
-
-<GlobalControl on:acceptLocal={acceptLocalConfig} />
-
-<main>
-  <div id="basic-options">
-    <Switches
-      bind:enable={config.enable}
-      bind:enableSkull={config.enableSkull}
-      bind:enableDynamicSkull={config.enableDynamicSkull}
-      bind:enableTransparentSkin={config.enableTransparentSkin}
-      bind:ignoreHttpsCertificate={config.ignoreHttpsCertificate}
-      bind:enableUpdateSkull={config.enableUpdateSkull}
-      bind:enableLocalProfileCache={config.enableLocalProfileCache}
-      bind:enableCacheAutoClean={config.enableCacheAutoClean}
-      bind:forceLoadAllTextures={config.forceLoadAllTextures}
-      bind:enableCape={config.enableCape} />
-
-    <sl-input
-      label="缓存有效期"
-      type="text"
-      inputmode="numeric"
-      value={config.cacheExpiry}
-      on:slInput={updateCacheExpiry}>
-      <span slot="suffix">秒</span>
-      <div slot="help-text">
-        不建议设置过小或过大。设置为 0 相当于关闭缓存。
-      </div>
-    </sl-input>
-
-    <label for="thread-pool-size">加载皮肤和头颅的线程池大小</label>
-    <sl-range
-      id="thread-pool-size"
-      value={config.threadPoolSize}
-      min="1"
-      max="16"
-      on:slChange={updateThreadPoolSize} />
-    <HelpText>
-      游玩在线人数较多的服务器时，可以适当增大该项的值，但也请不要设置得太高。
-    </HelpText>
-  </div>
-
-  <div id="load-list">
-    <LoadList bind:items={config.loadlist} />
-  </div>
-
-  <ConfigJson {json} />
-</main>

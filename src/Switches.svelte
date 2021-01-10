@@ -11,28 +11,18 @@
   export let enableCape = true
 </script>
 
-<style>
-  div:not(:first-child) {
-    margin-top: var(--sl-spacing-small);
-  }
-</style>
-
 <div>
   <sl-switch
     data-config-name="enable"
     checked={enable}
-    on:slChange={() => (enable = !enable)}>
-    启用 CustomSkinLoader
-  </sl-switch>
+    on:slChange={() => (enable = !enable)}> 启用 CustomSkinLoader </sl-switch>
 </div>
 
 <div>
   <sl-switch
     data-config-name="enableSkull"
     checked={enableSkull}
-    on:slChange={() => (enableSkull = !enableSkull)}>
-    启用头颅加载
-  </sl-switch>
+    on:slChange={() => (enableSkull = !enableSkull)}> 启用头颅加载 </sl-switch>
 </div>
 
 <div>
@@ -106,7 +96,11 @@
   <sl-switch
     data-config-name="enableCape"
     checked={enableCape}
-    on:slChange={() => (enableCape = !enableCape)}>
-    允许加载披风
-  </sl-switch>
+    on:slChange={() => (enableCape = !enableCape)}> 允许加载披风 </sl-switch>
 </div>
+
+<style>
+  div:not(:first-child) {
+    margin-top: var(--sl-spacing-small);
+  }
+</style>

@@ -1,3 +1,7 @@
+<div class="help-text">
+  <slot />
+</div>
+
 <style>
   .help-text {
     width: 50%;
@@ -5,7 +9,3 @@
     color: var(--sl-input-help-text-color);
   }
 </style>
-
-<div class="help-text">
-  <slot />
-</div>

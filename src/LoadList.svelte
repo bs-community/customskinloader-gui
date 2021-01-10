@@ -65,21 +65,6 @@
   }
 </script>
 
-<style>
-  #drag-tip {
-    margin: var(--sl-spacing-x-small);
-  }
-
-  #type-radios {
-    margin: var(--sl-spacing-x-small) 0;
-  }
-
-  #type-radios sl-radio {
-    width: 40%;
-    margin: var(--sl-spacing-xx-small) 0;
-  }
-</style>
-
 <DragDropList bind:items on:edit={editItem} on:remove={removeItem} />
 
 <div id="drag-tip">
@@ -95,51 +80,61 @@
         name="type"
         value="MojangAPI"
         checked={editingItem.type === 'MojangAPI'}
-        on:slChange={switchType}>
-        MojangAPI
-      </sl-radio>
+        on:slChange={switchType}>MojangAPI</sl-radio
+      >
       <sl-radio
         name="type"
         value="CustomSkinAPI"
         checked={editingItem.type === 'CustomSkinAPI'}
-        on:slChange={switchType}>
-        CustomSkinAPI
-      </sl-radio>
+        on:slChange={switchType}>CustomSkinAPI</sl-radio
+      >
       <sl-radio
         name="type"
         value="UniSkinAPI"
         checked={editingItem.type === 'UniSkinAPI'}
-        on:slChange={switchType}>
-        UniSkinAPI
-      </sl-radio>
+        on:slChange={switchType}>UniSkinAPI</sl-radio
+      >
       <sl-radio
         name="type"
         value="GlitchlessAPI"
         checked={editingItem.type === 'GlitchlessAPI'}
-        on:slChange={switchType}>
-        GlitchlessAPI
-      </sl-radio>
+        on:slChange={switchType}>GlitchlessAPI</sl-radio
+      >
       <sl-radio
         name="type"
         value="Elyby"
         checked={editingItem.type === 'Elyby'}
-        on:slChange={switchType}>
-        Elyby
-      </sl-radio>
+        on:slChange={switchType}>Elyby</sl-radio
+      >
       <sl-radio
         name="type"
         value="Legacy"
         checked={editingItem.type === 'Legacy'}
-        on:slChange={switchType}>
-        传统加载方式
-      </sl-radio>
+        on:slChange={switchType}>传统加载方式</sl-radio
+      >
     </div>
     <sl-input
       label="名称"
       required
       value={editingItem.name}
-      on:input={updateName} />
+      on:input={updateName}
+    />
     <LoadListItemEditor bind:item={editingItem} />
     <sl-button type="primary" on:click={() => (editing = -1)}>完成</sl-button>
   </div>
 {/if}
+
+<style>
+  #drag-tip {
+    margin: var(--sl-spacing-x-small);
+  }
+
+  #type-radios {
+    margin: var(--sl-spacing-x-small) 0;
+  }
+
+  #type-radios sl-radio {
+    width: 40%;
+    margin: var(--sl-spacing-xx-small) 0;
+  }
+</style>
