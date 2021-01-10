@@ -10,8 +10,8 @@
   "dependencies": {
     "@shoelace-style/shoelace": "^2.0.0-beta.25",
     "highlight.js": "^10.4.0",
-    "svelte": "^3.29.7",
-    "svelte-dnd-action": "^0.6.22"
+    "svelte": "^3.31.2",
+    "svelte-dnd-action": "^0.6.30"
   },
   "devDependencies": {
     "@gplane/tsconfig": "^4.0.0",
@@ -24,7 +24,7 @@
     "prettier": "^2.2.0",
     "prettier-plugin-svelte": "^2.0.3",
     "snowpack": "^2.17.1",
-    "svelte-check": "^1.1.15",
+    "svelte-check": "^1.1.26",
     "svelte-preprocess": "^4.6.1"
   }
 }
