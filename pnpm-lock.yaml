@@ -1,5 +1,5 @@
 dependencies:
-  '@shoelace-style/shoelace': 2.0.0-beta.25
+  '@shoelace-style/shoelace': 2.0.0-beta.26
   highlight.js: 10.4.0
   svelte: 3.31.2
   svelte-dnd-action: 0.6.30
@@ -1145,15 +1145,20 @@ packages:
       rollup: ^1.20.0||^2.0.0
     resolution:
       integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==
-  /@shoelace-style/shoelace/2.0.0-beta.25:
+  /@shoelace-style/animations/1.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-sv005CAsCmNmo1Uth/0k1lnU/Jp9/RDskVcCVBwaL/nwRLmm+BOC01ihVmTJ3RqBcYNzP5o+BuKC/GJOFUvLPw==
+  /@shoelace-style/shoelace/2.0.0-beta.26:
     dependencies:
       '@popperjs/core': 2.5.4
+      '@shoelace-style/animations': 1.0.0
       '@stencil/core': 2.3.0
       '@types/resize-observer-browser': 0.1.5
       color: 3.1.3
     dev: false
     resolution:
-      integrity: sha512-wdiL1poXeI9uIs2w7+auX94msM17x3L4Hn0CZm/kzkSxsfl2McGJBDRZv5t3u70LsKl/TtK5Pj3SZyt/BsZfzg==
+      integrity: sha512-qR69+HOXXBOpD0+h53QKM8umu4kVGiZGwFKIYSCjkSku8qLJGLV/ItPBXFZN2soUnHtJ8XNgnKFTFJ4OWLxXFA==
   /@snowpack/app-scripts-svelte/1.9.2_svelte@3.31.2:
     dependencies:
       '@babel/core': 7.12.7
@@ -3645,7 +3650,7 @@ packages:
     resolution:
       integrity: sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==
   /resolve-url/0.2.1:
-    deprecated: 'https://github.com/lydell/resolve-url#deprecated'
+    deprecated: https://github.com/lydell/resolve-url#deprecated
     dev: true
     resolution:
       integrity: sha1-LGN/53yJOv0qZj/iGqkIAGjiBSo=
@@ -4367,7 +4372,7 @@ packages:
     resolution:
       integrity: sha1-9rRQHC7EzdJrp4vnIilh3ndiFZg=
   /urix/0.1.0:
-    deprecated: 'Please see https://github.com/lydell/urix#deprecated'
+    deprecated: Please see https://github.com/lydell/urix#deprecated
     dev: true
     resolution:
       integrity: sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI=
@@ -4450,7 +4455,7 @@ packages:
       integrity: sha512-WOkpgNhPTlE73h4VFAFsOnomJVaovO8VqLDzy5saChRBFQFBoMYirowyW+Q9HB4HFF4Z7VZTiG3iSzJJA29yRA==
 specifiers:
   '@gplane/tsconfig': ^4.0.0
-  '@shoelace-style/shoelace': ^2.0.0-beta.25
+  '@shoelace-style/shoelace': ^2.0.0-beta.26
   '@snowpack/app-scripts-svelte': ^1.9.2
   '@snowpack/plugin-dotenv': ^2.0.4
   '@snowpack/plugin-optimize': ^0.2.9
