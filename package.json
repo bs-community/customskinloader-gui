@@ -9,22 +9,23 @@
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.0.0-beta.26",
-    "highlight.js": "^10.5.0",
-    "svelte": "^3.32.1",
-    "svelte-dnd-action": "^0.6.30"
+    "highlight.js": "^10.7.1",
+    "svelte": "^3.35.0",
+    "svelte-dnd-action": "^0.9.1"
   },
   "devDependencies": {
-    "@gplane/tsconfig": "^4.1.0",
-    "@snowpack/app-scripts-svelte": "^1.9.2",
+    "@gplane/tsconfig": "^4.2.0",
+    "@snowpack/app-scripts-svelte": "^2.0.1",
     "@snowpack/plugin-dotenv": "^2.0.5",
     "@snowpack/plugin-optimize": "^0.2.13",
     "@snowpack/plugin-run-script": "^2.3.0",
-    "@snowpack/plugin-svelte": "^3.5.2",
+    "@snowpack/plugin-svelte": "^3.6.0",
     "@types/snowpack-env": "^2.3.3",
     "prettier": "^2.2.1",
-    "prettier-plugin-svelte": "^2.1.1",
-    "snowpack": "^3.0.11",
-    "svelte-check": "^1.1.31",
-    "svelte-preprocess": "^4.6.5"
+    "prettier-plugin-svelte": "^2.2.0",
+    "snowpack": "^3.1.2",
+    "svelte-check": "^1.2.6",
+    "svelte-preprocess": "^4.6.9",
+    "typescript": "^4.2.3"
   }
 }
