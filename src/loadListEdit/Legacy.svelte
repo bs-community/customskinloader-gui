@@ -51,7 +51,8 @@
   >
   <sl-checkbox
     checked={item.checkPNG}
-    on:slChange={() => (item.checkPNG = !item.checkPNG)}>
+    on:slChange={() => (item.checkPNG = !item.checkPNG)}
+  >
     检查材质文件是否为 PNG
   </sl-checkbox>
 </sl-details>

@@ -15,21 +15,28 @@
   <sl-switch
     data-config-name="enable"
     checked={enable}
-    on:slChange={() => (enable = !enable)}> 启用 CustomSkinLoader </sl-switch>
+    on:slChange={() => (enable = !enable)}
+  >
+    启用 CustomSkinLoader
+  </sl-switch>
 </div>
 
 <div>
   <sl-switch
     data-config-name="enableSkull"
     checked={enableSkull}
-    on:slChange={() => (enableSkull = !enableSkull)}> 启用头颅加载 </sl-switch>
+    on:slChange={() => (enableSkull = !enableSkull)}
+  >
+    启用头颅加载
+  </sl-switch>
 </div>
 
 <div>
   <sl-switch
     data-config-name="enableDynamicSkull"
     checked={enableDynamicSkull}
-    on:slChange={() => (enableDynamicSkull = !enableDynamicSkull)}>
+    on:slChange={() => (enableDynamicSkull = !enableDynamicSkull)}
+  >
     启用动态头颅
   </sl-switch>
 </div>
@@ -38,7 +45,8 @@
   <sl-switch
     data-config-name="enableTransparentSkin"
     checked={enableTransparentSkin}
-    on:slChange={() => (enableTransparentSkin = !enableTransparentSkin)}>
+    on:slChange={() => (enableTransparentSkin = !enableTransparentSkin)}
+  >
     启用透明皮肤
   </sl-switch>
 </div>
@@ -47,7 +55,8 @@
   <sl-switch
     data-config-name="ignoreHttpsCertificate"
     checked={ignoreHttpsCertificate}
-    on:slChange={() => (ignoreHttpsCertificate = !ignoreHttpsCertificate)}>
+    on:slChange={() => (ignoreHttpsCertificate = !ignoreHttpsCertificate)}
+  >
     忽略全局 HTTPS 证书
   </sl-switch>
 </div>
@@ -57,7 +66,8 @@
     data-config-name="enableUpdateSkull"
     title="易引发卡顿，不建议开启。"
     checked={enableUpdateSkull}
-    on:slChange={() => (enableUpdateSkull = !enableUpdateSkull)}>
+    on:slChange={() => (enableUpdateSkull = !enableUpdateSkull)}
+  >
     开启头颅更新
   </sl-switch>
 </div>
@@ -67,7 +77,8 @@
     data-config-name="enableLocalProfileCache"
     title="开启后可在无网络时继续使用缓存的皮肤，不建议在网络状态稳定时仍然开启。"
     checked={enableLocalProfileCache}
-    on:slChange={() => (enableLocalProfileCache = !enableLocalProfileCache)}>
+    on:slChange={() => (enableLocalProfileCache = !enableLocalProfileCache)}
+  >
     开启本地皮肤信息缓存
   </sl-switch>
 </div>
@@ -77,7 +88,8 @@
     data-config-name="enableCacheAutoClean"
     title="若开启了本地皮肤信息缓存，则强制不清理。"
     checked={enableCacheAutoClean}
-    on:slChange={() => (enableCacheAutoClean = !enableCacheAutoClean)}>
+    on:slChange={() => (enableCacheAutoClean = !enableCacheAutoClean)}
+  >
     启动时清理所有缓存
   </sl-switch>
 </div>
@@ -87,7 +99,8 @@
     data-config-name="forceLoadAllTextures"
     title="不开启的默认逻辑是有任意皮肤站提供了任意材质就停止加载，不建议开启。"
     checked={forceLoadAllTextures}
-    on:slChange={() => (forceLoadAllTextures = !forceLoadAllTextures)}>
+    on:slChange={() => (forceLoadAllTextures = !forceLoadAllTextures)}
+  >
     加载皮肤又加载披风后才停止加载
   </sl-switch>
 </div>
@@ -96,7 +109,10 @@
   <sl-switch
     data-config-name="enableCape"
     checked={enableCape}
-    on:slChange={() => (enableCape = !enableCape)}> 允许加载披风 </sl-switch>
+    on:slChange={() => (enableCape = !enableCape)}
+  >
+    允许加载披风
+  </sl-switch>
 </div>
 
 <style>

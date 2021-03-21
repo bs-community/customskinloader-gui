@@ -17,7 +17,8 @@
   <sl-input
     label="Session Root"
     value={item.sessionRoot}
-    on:input={updateSessionRoot}>
+    on:input={updateSessionRoot}
+  >
     <div slot="help-text">
       可选，Yggdrasil API 的会话服务器（Session Server）的地址
     </div>

@@ -10,7 +10,8 @@
   <sl-input
     label="User Agent"
     value={item.userAgent}
-    on:input={updateUserAgent}>
+    on:input={updateUserAgent}
+  >
     <div slot="help-text">可选</div>
   </sl-input>
 </sl-details>

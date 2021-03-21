@@ -105,7 +105,8 @@
       type="text"
       inputmode="numeric"
       value={config.cacheExpiry}
-      on:slInput={updateCacheExpiry}>
+      on:slInput={updateCacheExpiry}
+    >
       <span slot="suffix">秒</span>
       <div slot="help-text">
         不建议设置过小或过大。设置为 0 相当于关闭缓存。

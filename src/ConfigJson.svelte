@@ -23,12 +23,16 @@
     <sl-button
       type="primary"
       download="CustomSkinLoader.json"
-      href={downloadLink}> 下载 </sl-button>
+      href={downloadLink}
+    >
+      下载
+    </sl-button>
     <sl-button
       type="primary"
       disabled={copied}
       aria-disabled={copied}
-      on:click={copyConfig}>
+      on:click={copyConfig}
+    >
       {#if copied}已{/if}复制
     </sl-button>
   </div>

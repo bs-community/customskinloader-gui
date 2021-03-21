@@ -15,14 +15,16 @@
   required
   type="url"
   value={item.root}
-  on:input={updateRoot}>
+  on:input={updateRoot}
+>
   <div slot="help-text">皮肤站的根（Root）地址</div>
 </sl-input>
 <sl-details summary="高级选项">
   <sl-input
     label="User Agent"
     value={item.userAgent}
-    on:input={updateUserAgent}>
+    on:input={updateUserAgent}
+  >
     <div slot="help-text">可选</div>
   </sl-input>
 </sl-details>

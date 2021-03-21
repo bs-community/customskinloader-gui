@@ -53,7 +53,10 @@
       <sl-button
         type="info"
         href="https://github.com/bs-community/customskinloader-gui"
-        target="_blank"> View on GitHub </sl-button>
+        target="_blank"
+      >
+        View on GitHub
+      </sl-button>
     </div>
     <div>
       <sl-switch checked={darkMode} on:slChange={() => (darkMode = !darkMode)}>
