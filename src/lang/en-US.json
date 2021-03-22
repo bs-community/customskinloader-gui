@@ -16,6 +16,25 @@
   "legacy": "Legacy",
   "name": "Name",
   "done": "Done",
+  "advanced": "Advanced",
+  "optional": "Optional",
+  "mojang": {
+    "apiRoot": "Yggdrasil API root URL. Optional.",
+    "sessionRoot": "Yggdrasil API session server URL. Optional."
+  },
+  "jsonApi": {
+    "root": "Skin server root URL"
+  },
+  "legacyApi": {
+    "skin": "Skin file path",
+    "cape": "Cape file path",
+    "elytra": "Elytra file path",
+    "model": "Model",
+    "auto": "Auto detect",
+    "steve": "Steve",
+    "alex": "Alex",
+    "checkPNG": "Check if file is valid PNG."
+  },
   "json": {
     "download": "Download",
     "copy": "Copy",

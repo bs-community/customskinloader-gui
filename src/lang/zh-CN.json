@@ -16,6 +16,25 @@
   "legacy": "传统加载方式",
   "name": "名称",
   "done": "完成",
+  "advanced": "高级选项",
+  "optional": "可选",
+  "mojang": {
+    "apiRoot": "可选，Yggdrasil API 的根（Root）地址",
+    "sessionRoot": "可选，Yggdrasil API 的会话服务器（Session Server）的地址"
+  },
+  "jsonApi": {
+    "root": "皮肤站的根（Root）地址"
+  },
+  "legacyApi": {
+    "skin": "皮肤文件位置",
+    "cape": "披风文件位置",
+    "elytra": "鞘翅文件位置",
+    "model": "模型",
+    "auto": "自动识别",
+    "steve": "Steve 模型",
+    "alex": "Alex 模型",
+    "checkPNG": "检查材质文件是否为 PNG"
+  },
   "json": {
     "download": "下载",
     "copy": "复制",

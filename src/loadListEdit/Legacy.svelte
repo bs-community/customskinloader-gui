@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { _ } from 'svelte-i18n'
+
   export let item: Legacy
 
   function updateSkin(event: InputEvent) {
@@ -22,38 +24,52 @@
 </script>
 
 <sl-input
-  label="皮肤文件位置"
+  label={$_('legacyApi.skin')}
   required
   value={item.skin}
   on:input={updateSkin}
 />
-<sl-input label="披风文件位置" value={item.cape} on:input={updateCape} />
-<sl-input label="鞘翅文件位置" value={item.elytra} on:input={updateElytra} />
-<sl-details summary="高级选项">
-  <label for="">模型</label><br />
+<sl-input
+  label={$_('legacyApi.cape')}
+  value={item.cape}
+  on:input={updateCape}
+/>
+<sl-input
+  label={$_('legacyApi.elytra')}
+  value={item.elytra}
+  on:input={updateElytra}
+/>
+<sl-details summary={$_('advanced')}>
+  <label for="">{$_('legacyApi.model')}</label><br />
   <sl-radio
     name="model"
     value="auto"
     checked={item.model === 'auto'}
-    on:slChange={updateModel}>自动识别</sl-radio
+    on:slChange={updateModel}
   >
+    {$_('legacyApi.auto')}
+  </sl-radio>
   <sl-radio
     name="model"
     value="default"
     checked={item.model === 'default'}
-    on:slChange={updateModel}>Steve 模型</sl-radio
+    on:slChange={updateModel}
   >
+    {$_('legacyApi.steve')}
+  </sl-radio>
   <sl-radio
     name="model"
     value="slim"
     checked={item.model === 'slim'}
-    on:slChange={updateModel}>Alex 模型</sl-radio
+    on:slChange={updateModel}
   >
+    {$_('legacyApi.alex')}
+  </sl-radio>
   <sl-checkbox
     checked={item.checkPNG}
     on:slChange={() => (item.checkPNG = !item.checkPNG)}
   >
-    检查材质文件是否为 PNG
+    {$_('legacyApi.checkPNG')}
   </sl-checkbox>
 </sl-details>
 

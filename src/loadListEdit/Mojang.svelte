@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { _ } from 'svelte-i18n'
+
   export let item: MojangAPI
 
   function updateApiRoot(event: InputEvent) {
@@ -10,17 +12,15 @@
   }
 </script>
 
-<sl-details summary="高级选项">
+<sl-details summary={$_('advanced')}>
   <sl-input label="API Root" value={item.apiRoot} on:input={updateApiRoot}>
-    <div slot="help-text">可选，Yggdrasil API 的根（Root）地址</div>
+    <div slot="help-text">{$_('mojang.apiRoot')}</div>
   </sl-input>
   <sl-input
     label="Session Root"
     value={item.sessionRoot}
     on:input={updateSessionRoot}
   >
-    <div slot="help-text">
-      可选，Yggdrasil API 的会话服务器（Session Server）的地址
-    </div>
+    <div slot="help-text">{$_('mojang.sessionRoot')}</div>
   </sl-input>
 </sl-details>
