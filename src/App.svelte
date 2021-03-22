@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Components } from '@shoelace-style/shoelace'
+  import type { SlSwitch } from '@shoelace-style/shoelace'
   import HelpText from './HelpText.svelte'
   import GlobalControl from './GlobalControl.svelte'
   import Switches from './Switches.svelte'
@@ -71,7 +71,7 @@
         // This isn't an elegant way to update config,
         // however there seems a bug from "shoelace",
         // so this is a workaround.
-        const el = document.querySelector<Components.SlSwitch & Element>(
+        const el = document.querySelector<SlSwitch & Element>(
           `sl-switch[data-config-name=${k}]`
         )
         el!.checked = value

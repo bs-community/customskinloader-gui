@@ -1,10 +1,10 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
-  import type { Components } from '@shoelace-style/shoelace'
+  import type { SlDialog } from '@shoelace-style/shoelace'
 
   const dispatch = createEventDispatcher()
   let input: HTMLInputElement
-  let dialog: Components.SlDialog
+  let dialog: SlDialog
   let message = ''
 
   function handleFileInput() {
