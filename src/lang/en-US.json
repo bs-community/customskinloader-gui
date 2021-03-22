@@ -2,6 +2,11 @@
   "openLocal": "Open local config file",
   "viewOnGithub": "View on GitHub",
   "darkMode": "Dark Mode",
+  "fileInput": {
+    "invalid": "Invalid JSON file. Please choose another file.",
+    "failed": "Failed to read file."
+  },
+  "ok": "OK",
   "cacheExpiry": {
     "label": "Cache expires after",
     "suffix": "sec",

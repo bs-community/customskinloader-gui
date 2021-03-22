@@ -1,5 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
+  import { _ } from 'svelte-i18n'
   import type { SlDialog } from '@shoelace-style/shoelace'
 
   const dispatch = createEventDispatcher()
@@ -15,13 +16,13 @@
       reader.addEventListener('loadend', () => {
         try {
           dispatch('input', JSON.parse(reader.result as string))
-        } catch (_) {
-          message = '不是有效的 JSON 文件，请重新选择'
+        } catch {
+          message = $_('fileInput.invalid')
           dialog.show()
         }
       })
       reader.addEventListener('error', () => {
-        message = '读取失败'
+        message = $_('fileInput.failed')
         dialog.show()
       })
     }
@@ -32,13 +33,15 @@
   }
 </script>
 
-<sl-button type="primary" on:click={openFilePicker}>打开本地配置文件</sl-button>
+<sl-button type="primary" on:click={openFilePicker}>
+  {$_('openLocal')}
+</sl-button>
 <input type="file" on:input={handleFileInput} bind:this={input} />
 
 <sl-dialog bind:this={dialog}>
   {message}
   <sl-button slot="footer" type="primary" on:click={() => dialog.hide()}>
-    好
+    {$_('ok')}
   </sl-button>
 </sl-dialog>
 

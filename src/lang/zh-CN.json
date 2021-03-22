@@ -2,6 +2,11 @@
   "openLocal": "打开本地配置文件",
   "viewOnGithub": "在 GitHub 上查看此项目",
   "darkMode": "夜间模式",
+  "fileInput": {
+    "invalid": "不是有效的 JSON 文件，请重新选择",
+    "failed": "读取失败"
+  },
+  "ok": "好",
   "cacheExpiry": {
     "label": "缓存有效期",
     "suffix": "秒",
