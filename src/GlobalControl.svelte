@@ -61,7 +61,7 @@
         href="https://github.com/bs-community/customskinloader-gui"
         target="_blank"
       >
-        {$_('view_on_github')}
+        {$_('viewOnGithub')}
       </sl-button>
     </div>
     <div class="right-controls">
@@ -70,7 +70,7 @@
         <sl-menu-item value="en-US">English</sl-menu-item>
       </sl-select>
       <sl-switch checked={darkMode} on:slChange={() => (darkMode = !darkMode)}>
-        {$_('dark_mode')}
+        {$_('darkMode')}
       </sl-switch>
     </div>
   </div>
