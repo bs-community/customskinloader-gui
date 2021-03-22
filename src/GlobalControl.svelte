@@ -1,5 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher, onMount } from 'svelte'
+  import { _, locale } from 'svelte-i18n'
+  import type { SlSelect } from '@shoelace-style/shoelace'
   import FileInput from './FileInput.svelte'
 
   const dispatch = createEventDispatcher()
@@ -44,6 +46,10 @@
       darkMode = true
     }
   })
+
+  function handleLangChange(event: Event) {
+    locale.set((event.target as SlSelect).value)
+  }
 </script>
 
 <sl-card>
@@ -55,12 +61,16 @@
         href="https://github.com/bs-community/customskinloader-gui"
         target="_blank"
       >
-        View on GitHub
+        {$_('view_on_github')}
       </sl-button>
     </div>
-    <div>
+    <div class="right-controls">
+      <sl-select pill value={$locale} on:slChange={handleLangChange}>
+        <sl-menu-item value="zh-CN">中文（简体）</sl-menu-item>
+        <sl-menu-item value="en-US">English</sl-menu-item>
+      </sl-select>
       <sl-switch checked={darkMode} on:slChange={() => (darkMode = !darkMode)}>
-        夜间模式
+        {$_('dark_mode')}
       </sl-switch>
     </div>
   </div>
@@ -82,5 +92,12 @@
 
   sl-button:not(:first-child) {
     margin-left: var(--sl-spacing-x-small);
+  }
+
+  .right-controls {
+    display: flex;
+  }
+  .right-controls > sl-select {
+    margin-right: 30px;
   }
 </style>
