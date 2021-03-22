@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { _ } from 'svelte-i18n'
   import HelpText from './HelpText.svelte'
   import DragDropList from './DragDropList.svelte'
   import LoadListItemEditor from './LoadListItemEditor.svelte'
@@ -68,11 +69,11 @@
 <DragDropList bind:items on:edit={editItem} on:remove={removeItem} />
 
 <div id="drag-tip">
-  <HelpText>可以通过拖拽列表项目来调整顺序。</HelpText>
+  <HelpText>{$_('dragTip')}</HelpText>
 </div>
 
 {#if editing === -1}
-  <sl-button type="primary" on:click={addItem}>添加</sl-button>
+  <sl-button type="primary" on:click={addItem}>{$_('add')}</sl-button>
 {:else if editingItem}
   <div id="item-editor">
     <div id="type-radios">
@@ -80,47 +81,61 @@
         name="type"
         value="MojangAPI"
         checked={editingItem.type === 'MojangAPI'}
-        on:slChange={switchType}>MojangAPI</sl-radio
+        on:slChange={switchType}
       >
+        MojangAPI
+      </sl-radio>
       <sl-radio
         name="type"
         value="CustomSkinAPI"
         checked={editingItem.type === 'CustomSkinAPI'}
-        on:slChange={switchType}>CustomSkinAPI</sl-radio
+        on:slChange={switchType}
       >
+        CustomSkinAPI
+      </sl-radio>
       <sl-radio
         name="type"
         value="UniSkinAPI"
         checked={editingItem.type === 'UniSkinAPI'}
-        on:slChange={switchType}>UniSkinAPI</sl-radio
+        on:slChange={switchType}
       >
+        UniSkinAPI
+      </sl-radio>
       <sl-radio
         name="type"
         value="GlitchlessAPI"
         checked={editingItem.type === 'GlitchlessAPI'}
-        on:slChange={switchType}>GlitchlessAPI</sl-radio
+        on:slChange={switchType}
       >
+        GlitchlessAPI
+      </sl-radio>
       <sl-radio
         name="type"
         value="Elyby"
         checked={editingItem.type === 'Elyby'}
-        on:slChange={switchType}>Elyby</sl-radio
+        on:slChange={switchType}
       >
+        Elyby
+      </sl-radio>
       <sl-radio
         name="type"
         value="Legacy"
         checked={editingItem.type === 'Legacy'}
-        on:slChange={switchType}>传统加载方式</sl-radio
+        on:slChange={switchType}
       >
+        {$_('legacy')}
+      </sl-radio>
     </div>
     <sl-input
-      label="名称"
+      label={$_('name')}
       required
       value={editingItem.name}
       on:input={updateName}
     />
     <LoadListItemEditor bind:item={editingItem} />
-    <sl-button type="primary" on:click={() => (editing = -1)}>完成</sl-button>
+    <sl-button type="primary" on:click={() => (editing = -1)}>
+      {$_('done')}
+    </sl-button>
   </div>
 {/if}
 

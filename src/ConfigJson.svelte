@@ -1,5 +1,6 @@
 <script lang="ts">
   import hljs from 'highlight.js/lib/core'
+  import { _ } from 'svelte-i18n'
 
   export let json: string
 
@@ -25,7 +26,7 @@
       download="CustomSkinLoader.json"
       href={downloadLink}
     >
-      下载
+      {$_('json.download')}
     </sl-button>
     <sl-button
       type="primary"
@@ -33,7 +34,11 @@
       aria-disabled={copied}
       on:click={copyConfig}
     >
-      {#if copied}已{/if}复制
+      {#if copied}
+        {$_('json.copied')}
+      {:else}
+        {$_('json.copy')}
+      {/if}
     </sl-button>
   </div>
 </sl-card>

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { _ } from 'svelte-i18n'
   import type { SlSwitch } from '@shoelace-style/shoelace'
   import HelpText from './HelpText.svelte'
   import GlobalControl from './GlobalControl.svelte'
@@ -101,19 +102,19 @@
     />
 
     <sl-input
-      label="缓存有效期"
+      label={$_('cacheExpiry.label')}
       type="text"
       inputmode="numeric"
       value={config.cacheExpiry}
       on:slInput={updateCacheExpiry}
     >
-      <span slot="suffix">秒</span>
+      <span slot="suffix">{$_('cacheExpiry.suffix')}</span>
       <div slot="help-text">
-        不建议设置过小或过大。设置为 0 相当于关闭缓存。
+        {$_('cacheExpiry.help')}
       </div>
     </sl-input>
 
-    <label for="thread-pool-size">加载皮肤和头颅的线程池大小</label>
+    <label for="thread-pool-size">{$_('threadPoolSize.label')}</label>
     <sl-range
       id="thread-pool-size"
       value={config.threadPoolSize}
@@ -122,7 +123,7 @@
       on:slChange={updateThreadPoolSize}
     />
     <HelpText>
-      游玩在线人数较多的服务器时，可以适当增大该项的值，但也请不要设置得太高。
+      {$_('threadPoolSize.help')}
     </HelpText>
   </div>
 

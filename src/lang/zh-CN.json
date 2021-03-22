@@ -1,5 +1,24 @@
 {
   "openLocal": "打开本地配置文件",
   "viewOnGithub": "在 GitHub 上查看此项目",
-  "darkMode": "夜间模式"
+  "darkMode": "夜间模式",
+  "cacheExpiry": {
+    "label": "缓存有效期",
+    "suffix": "秒",
+    "help": "不建议设置过小或过大。设置为 0 相当于关闭缓存。"
+  },
+  "threadPoolSize": {
+    "label": "加载皮肤和头颅的线程池大小",
+    "help": "游玩在线人数较多的服务器时，可以适当增大该项的值，但也请不要设置得太高。"
+  },
+  "dragTip": "可以通过拖拽列表项目来调整顺序。",
+  "add": "添加",
+  "legacy": "传统加载方式",
+  "name": "名称",
+  "done": "完成",
+  "json": {
+    "download": "下载",
+    "copy": "复制",
+    "copied": "已复制"
+  }
 }

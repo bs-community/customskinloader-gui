@@ -1,5 +1,24 @@
 {
   "openLocal": "Open local config file",
   "viewOnGithub": "View on GitHub",
-  "darkMode": "Dark Mode"
+  "darkMode": "Dark Mode",
+  "cacheExpiry": {
+    "label": "Cache expires after",
+    "suffix": "sec",
+    "help": "It shouldn't be too low or too high. Setting it to 0 will disable cache."
+  },
+  "threadPoolSize": {
+    "label": "Thread pool size of loading skins and skulls",
+    "help": "It can be increased when entering a server which has many players, but it should't be too high."
+  },
+  "dragTip": "To re-order items, drag and drop each item.",
+  "add": "Add",
+  "legacy": "Legacy",
+  "name": "Name",
+  "done": "Done",
+  "json": {
+    "download": "Download",
+    "copy": "Copy",
+    "copied": "Copied!"
+  }
 }
