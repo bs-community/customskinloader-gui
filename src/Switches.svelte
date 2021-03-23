@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { _ } from 'svelte-i18n'
+
   export let enable = true
   export let enableSkull = true
   export let enableDynamicSkull = true
@@ -17,7 +19,7 @@
     checked={enable}
     on:slChange={() => (enable = !enable)}
   >
-    启用 CustomSkinLoader
+    {$_('enableCSL')}
   </sl-switch>
 </div>
 
@@ -27,7 +29,7 @@
     checked={enableSkull}
     on:slChange={() => (enableSkull = !enableSkull)}
   >
-    启用头颅加载
+    {$_('enableSkull')}
   </sl-switch>
 </div>
 
@@ -37,7 +39,7 @@
     checked={enableDynamicSkull}
     on:slChange={() => (enableDynamicSkull = !enableDynamicSkull)}
   >
-    启用动态头颅
+    {$_('enableDynamicSkull')}
   </sl-switch>
 </div>
 
@@ -47,7 +49,7 @@
     checked={enableTransparentSkin}
     on:slChange={() => (enableTransparentSkin = !enableTransparentSkin)}
   >
-    启用透明皮肤
+    {$_('enableTransparentSkin')}
   </sl-switch>
 </div>
 
@@ -57,51 +59,51 @@
     checked={ignoreHttpsCertificate}
     on:slChange={() => (ignoreHttpsCertificate = !ignoreHttpsCertificate)}
   >
-    忽略全局 HTTPS 证书
+    {$_('ignoreHttpsCertificate')}
   </sl-switch>
 </div>
 
 <div>
   <sl-switch
     data-config-name="enableUpdateSkull"
-    title="易引发卡顿，不建议开启。"
+    title={$_('enableUpdateSkull.tip')}
     checked={enableUpdateSkull}
     on:slChange={() => (enableUpdateSkull = !enableUpdateSkull)}
   >
-    开启头颅更新
+    {$_('enableUpdateSkull.label')}
   </sl-switch>
 </div>
 
 <div>
   <sl-switch
     data-config-name="enableLocalProfileCache"
-    title="开启后可在无网络时继续使用缓存的皮肤，不建议在网络状态稳定时仍然开启。"
+    title={$_('enableLocalProfileCache.tip')}
     checked={enableLocalProfileCache}
     on:slChange={() => (enableLocalProfileCache = !enableLocalProfileCache)}
   >
-    开启本地皮肤信息缓存
+    {$_('enableLocalProfileCache.label')}
   </sl-switch>
 </div>
 
 <div>
   <sl-switch
     data-config-name="enableCacheAutoClean"
-    title="若开启了本地皮肤信息缓存，则强制不清理。"
+    title={$_('enableCacheAutoClean.tip')}
     checked={enableCacheAutoClean}
     on:slChange={() => (enableCacheAutoClean = !enableCacheAutoClean)}
   >
-    启动时清理所有缓存
+    {$_('enableCacheAutoClean.label')}
   </sl-switch>
 </div>
 
 <div>
   <sl-switch
     data-config-name="forceLoadAllTextures"
-    title="不开启的默认逻辑是有任意皮肤站提供了任意材质就停止加载，不建议开启。"
+    title={$_('forceLoadAllTextures.tip')}
     checked={forceLoadAllTextures}
     on:slChange={() => (forceLoadAllTextures = !forceLoadAllTextures)}
   >
-    加载皮肤又加载披风后才停止加载
+    {$_('forceLoadAllTextures.label')}
   </sl-switch>
 </div>
 
@@ -111,7 +113,7 @@
     checked={enableCape}
     on:slChange={() => (enableCape = !enableCape)}
   >
-    允许加载披风
+    {$_('enableCape')}
   </sl-switch>
 </div>
 

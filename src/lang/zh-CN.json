@@ -7,6 +7,28 @@
     "failed": "读取失败"
   },
   "ok": "好",
+  "enableCSL": "启用 CustomSkinLoader",
+  "enableSkull": "启用头颅加载",
+  "enableDynamicSkull": "启用动态头颅",
+  "enableTransparentSkin": "启用透明皮肤",
+  "ignoreHttpsCertificate": "忽略全局 HTTPS 证书",
+  "enableUpdateSkull": {
+    "label": "开启头颅更新",
+    "tip": "易引发卡顿，不建议开启。"
+  },
+  "enableLocalProfileCache": {
+    "label": "开启本地皮肤信息缓存",
+    "tip": "开启后可在无网络时继续使用缓存的皮肤，不建议在网络状态稳定时仍然开启。"
+  },
+  "enableCacheAutoClean": {
+    "label": "启动时清理所有缓存",
+    "tip": "若开启了本地皮肤信息缓存，则强制不清理。"
+  },
+  "forceLoadAllTextures": {
+    "label": "加载皮肤又加载披风后才停止加载",
+    "tip": "不开启的默认逻辑是有任意皮肤站提供了任意材质就停止加载，不建议开启。"
+  },
+  "enableCape": "允许加载披风",
   "cacheExpiry": {
     "label": "缓存有效期",
     "suffix": "秒",

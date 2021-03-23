@@ -7,6 +7,28 @@
     "failed": "Failed to read file."
   },
   "ok": "OK",
+  "enableCSL": "Enable CustomSkinLoader",
+  "enableSkull": "Enable loading skulls",
+  "enableDynamicSkull": "Enable dynamic skulls",
+  "enableTransparentSkin": "Enable transparent skins",
+  "ignoreHttpsCertificate": "Ignore global HTTPS certificates",
+  "enableUpdateSkull": {
+    "label": "Enable updating skulls",
+    "tip": "We don't advise to enable this because of performance issues."
+  },
+  "enableLocalProfileCache": {
+    "label": "Enable cache of local profiles",
+    "tip": "This will allow you to use cached skins even without network, but we don't advise to enable this if you're using a stable network."
+  },
+  "enableCacheAutoClean": {
+    "label": "Clean cache when loading CustomSkinLoader",
+    "tip": "It won't be cleaned if caching local profiles is enabled."
+  },
+  "forceLoadAllTextures": {
+    "label": "Force to load skin and cape even they come from different skin servers",
+    "tip": "If disabled, once CustomSkinLoader can load any textures, it will stop continuing loading. We don't advise to enable this."
+  },
+  "enableCape": "Enable loading capes",
   "cacheExpiry": {
     "label": "Cache expires after",
     "suffix": "sec",
