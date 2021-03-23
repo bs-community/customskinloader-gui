@@ -122,9 +122,11 @@
       max="16"
       on:slChange={updateThreadPoolSize}
     />
-    <HelpText>
-      {$_('threadPoolSize.help')}
-    </HelpText>
+    <div class="tip">
+      <HelpText>
+        {$_('threadPoolSize.help')}
+      </HelpText>
+    </div>
   </div>
 
   <div id="load-list">
@@ -154,6 +156,9 @@
     margin-right: var(--sl-input-spacing-medium);
   }
   #basic-options > sl-range {
+    width: 50%;
+  }
+  #basic-options .tip {
     width: 50%;
   }
 

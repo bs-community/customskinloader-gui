@@ -1,5 +1,6 @@
 <script lang="ts">
   import { _ } from 'svelte-i18n'
+  import HelpText from './HelpText.svelte'
   import DragDropList from './DragDropList.svelte'
   import LoadListItemEditor from './LoadListItemEditor.svelte'
 
@@ -67,7 +68,9 @@
 
 <DragDropList bind:items on:edit={editItem} on:remove={removeItem} />
 
-<div id="drag-tip">{$_('dragTip')}</div>
+<div id="drag-tip">
+  <HelpText>{$_('dragTip')}</HelpText>
+</div>
 
 {#if editing === -1}
   <sl-button type="primary" on:click={addItem}>{$_('add')}</sl-button>
@@ -139,8 +142,6 @@
 <style>
   #drag-tip {
     margin: var(--sl-spacing-x-small);
-    font-size: var(--sl-input-help-text-font-size-medium);
-    color: var(--sl-input-help-text-color);
   }
 
   #type-radios {
