@@ -7,6 +7,7 @@
     "failed": "Failed to read file."
   },
   "ok": "OK",
+  "hoverTip": "Hover on options below to gather more information.",
   "enableCSL": "Enable CustomSkinLoader",
   "enableSkull": "Enable loading skulls",
   "enableDynamicSkull": "Enable dynamic skulls",

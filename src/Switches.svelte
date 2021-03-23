@@ -1,5 +1,6 @@
 <script lang="ts">
   import { _ } from 'svelte-i18n'
+  import HelpText from './HelpText.svelte'
 
   export let enable = true
   export let enableSkull = true
@@ -12,6 +13,10 @@
   export let forceLoadAllTextures = false
   export let enableCape = true
 </script>
+
+<div class="hover-tip">
+  <HelpText>{$_('hoverTip')}</HelpText>
+</div>
 
 <div>
   <sl-switch
