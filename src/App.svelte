@@ -25,7 +25,7 @@
       {
         name: 'LittleSkin',
         type: 'CustomSkinAPI',
-        root: 'https://littlesk.in/',
+        root: 'https://littleskin.cn/',
       },
     ],
   }
