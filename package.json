@@ -1,32 +1,29 @@
 {
   "private": true,
   "license": "MIT",
+  "type": "module",
   "scripts": {
-    "start": "snowpack dev",
-    "build": "snowpack build",
-    "test": "tsc -p . && svelte-check && prettier --check --plugin-search-dir=. src",
-    "fmt": "prettier --write --plugin-search-dir=. src"
+    "dev": "vite",
+    "build": "vite build",
+    "test": "tsc -p . && svelte-check && prettier --check src",
+    "fmt": "prettier --write src"
   },
   "dependencies": {
-    "@shoelace-style/shoelace": "^2.0.0-beta.34",
-    "highlight.js": "^10.7.1",
-    "svelte": "^3.35.0",
-    "svelte-dnd-action": "^0.9.1",
-    "svelte-i18n": "^3.3.7"
+    "@shoelace-style/shoelace": "^2.6.0",
+    "highlight.js": "^11.8.0",
+    "svelte": "^4.1.2",
+    "svelte-dnd-action": "^0.9.24",
+    "svelte-i18n": "^3.7.0"
   },
   "devDependencies": {
-    "@gplane/tsconfig": "^4.2.0",
-    "@snowpack/app-scripts-svelte": "^2.0.1",
-    "@snowpack/plugin-dotenv": "^2.0.5",
-    "@snowpack/plugin-optimize": "^0.2.13",
-    "@snowpack/plugin-svelte": "^3.6.0",
-    "@types/snowpack-env": "^2.3.3",
-    "prettier": "^2.2.1",
-    "prettier-plugin-svelte": "^2.2.0",
-    "snowpack": "^3.1.2",
-    "svelte-check": "^1.2.6",
-    "svelte-hmr": "^0.14.0",
-    "svelte-preprocess": "^4.6.9",
-    "typescript": "^4.2.3"
+    "@gplane/tsconfig": "^6.0.0",
+    "@sveltejs/vite-plugin-svelte": "^2.4.3",
+    "prettier": "^3.0.1",
+    "prettier-plugin-svelte": "^3.0.3",
+    "svelte-check": "^3.4.6",
+    "svelte-hmr": "^0.15.2",
+    "svelte-preprocess": "^5.0.4",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.8"
   }
 }
