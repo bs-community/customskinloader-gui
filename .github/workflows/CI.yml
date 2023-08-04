@@ -6,9 +6,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: pnpm/action-setup@v1.2.1
-      with:
-        version: 5.8.0
-        run_install: true
-    - run: pnpm test
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2.4.0
+        with:
+          version: 8.6.10
+          run_install: true
+      - run: pnpm test
