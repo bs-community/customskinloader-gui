@@ -96,6 +96,7 @@
 
   .right-controls {
     display: flex;
+    align-items: center;
   }
   .right-controls > sl-select {
     margin-right: 30px;
