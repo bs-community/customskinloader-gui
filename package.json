@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "test": "tsc -p . && svelte-check && prettier --check src",
-    "fmt": "prettier --write src"
+    "test": "tsc -p . && svelte-check && prettier --check --plugin=prettier-plugin-svelte src",
+    "fmt": "prettier --write --plugin=prettier-plugin-svelte src"
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.6.0",
