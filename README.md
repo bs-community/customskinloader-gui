@@ -19,8 +19,7 @@ please open an issue to let us know!
 We use [pnpm](https://pnpm.js.org/) to manage our dependencies.
 Please use pnpm to install dependencies.
 
-We're using [Svelte](https://svelte.dev/) as front-end framework,
-and build them with [Snowpack](https://www.snowpack.dev/).
+We're using [Svelte](https://svelte.dev/) as front-end framework.
 
 UI framework is [Shoelace](https://shoelace.style/),
 which is a Web Components library.
