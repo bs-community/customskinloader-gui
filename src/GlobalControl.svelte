@@ -48,7 +48,7 @@
   })
 
   function handleLangChange(event: Event) {
-    locale.set((event.target as SlSelect).value)
+    locale.set((event.target as SlSelect).value as string)
   }
 </script>
 

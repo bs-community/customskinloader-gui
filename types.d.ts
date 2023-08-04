@@ -1,7 +1,3 @@
-declare module 'highlight.js/lib/core' {
-  export * from 'highlight.js'
-}
-
 declare module 'svelte-dnd-action' {
   interface DndOptions<T = unknown> {
     items: T[]
